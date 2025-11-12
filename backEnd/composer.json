@@ -1,0 +1,19 @@
+{
+    "name": "dell5480/back-end",
+    "description": "backend para la peluqueria",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dell5480\\BackEnd\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dayner1987",
+            "email": "vergil20005@outlook.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.11"
+    }
+}
