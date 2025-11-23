@@ -1,18 +1,57 @@
 <?php
 
-header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: *");
-
 require __DIR__ . '/../vendor/autoload.php';
 
-use Dell5480\BackEnd\Core\Router;
 use Dell5480\BackEnd\Controllers\AuthController;
+use Dell5480\BackEnd\Controllers\HomeController;
+use Dell5480\BackEnd\Controllers\UsuarioController;
 
-$router = new Router();
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$uri = str_replace('/DisenioWeb2/backEnd/public', '', $uri);
+$method = $_SERVER['REQUEST_METHOD'];
 
-// ENDPOINTS
-$router->add("POST", "login", [new AuthController(), "login"]);
-$router->add("POST", "register", [new AuthController(), "register"]);
+switch (true) {
 
-// EJECUTAR RUTAS
-$router->run();
+    // --- LOGIN ---
+    case ($uri === '/' || $uri === '/login'):
+        (new AuthController())->login();
+        break;
+
+    case ($uri === '/admin'):
+        (new HomeController())->admin();
+        break;
+
+    case ($uri === '/empleado'):
+        (new HomeController())->empleado();
+        break;
+
+    case ($uri === '/cliente'):
+        (new HomeController())->cliente();
+        break;
+
+    // --- USUARIOS ---
+    case ($uri === '/usuarios' && $method === 'GET'):
+        (new UsuarioController())->index();
+        break;
+
+    case ($uri === '/usuarios/create' && $method === 'POST'):
+        (new UsuarioController())->store();
+        break;
+
+    case (preg_match('/^\/usuarios\/update\/(\d+)$/', $uri, $m) && $method === 'POST'):
+        (new UsuarioController())->update($m[1]);
+        break;
+
+    case (preg_match('/^\/usuarios\/delete\/(\d+)$/', $uri, $m) && $method === 'POST'):
+        (new UsuarioController())->destroy($m[1]);
+        break;
+
+    case ($uri === '/register'):
+        require __DIR__ . '/../app/Views/register.php';
+        break;
+
+    // --- DEFAULT ---
+    default:
+        http_response_code(404);
+        echo "404 - Página no encontrada";
+}

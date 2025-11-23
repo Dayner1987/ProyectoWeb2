@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'dell5480/back-end',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'cb03159e4dd42abccfd9cb215ef7f46c1635d61e',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'dell5480/back-end' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'cb03159e4dd42abccfd9cb215ef7f46c1635d61e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

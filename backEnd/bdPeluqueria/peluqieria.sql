@@ -8,8 +8,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_Z
 -- -----------------------------------------------------
 -- Schema bdPeluqueria
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `bdPeluqueria` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
-USE `bdPeluqueria`;
+CREATE SCHEMA IF NOT EXISTS `peluqueriabd2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
+USE `peluqueriabd2`;
 
 -- -----------------------------------------------------
 -- Tabla Roles
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `Usuarios` (
     `nombreUsuario` VARCHAR(45) NOT NULL,
     `ciUsuario` VARCHAR(20) NOT NULL,
     `mailUsuario` VARCHAR(45) NOT NULL UNIQUE,
-    `contrasenia` VARCHAR(200) NOT NULL,
+    `password` VARCHAR(200) NOT NULL,
     `Roles_idRoles` INT UNSIGNED NOT NULL,
     PRIMARY KEY (`idUsuarios`),
     FOREIGN KEY (`Roles_idRoles`) REFERENCES `Roles`(`idRoles`)

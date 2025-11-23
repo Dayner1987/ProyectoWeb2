@@ -1,3 +1,9 @@
+<?php
+// login.php
+// $error viene del controlador solo si hubo un intento fallido de login
+$error = $error ?? '';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,7 +37,7 @@
     </h2>
 
     <!-- FORMULARIO -->
-   <form action="/DisenioWeb2/backEnd/public/login" method="POST">
+    <form action="/DisenioWeb2/backEnd/public/login" method="POST">
 
         <div>
             <label class="text-white font-semibold">Correo o CI</label>
@@ -40,6 +46,7 @@
                 <input 
                     type="text" 
                     name="usuario"
+                    value="<?= htmlspecialchars($_POST['usuario'] ?? '') ?>" 
                     placeholder="Ej: usuario@gmail.com o 12345678" 
                     class="w-full pl-10 pr-4 py-2 rounded-xl bg-white/30 text-white placeholder-white/70 focus:outline-none"
                     required
@@ -70,10 +77,23 @@
 
     <p class="text-white mt-6 text-center">
         ¿No tienes cuenta?
-        <a href="/register" class="text-yellow-300 font-semibold">Regístrate</a>
+        <a href="/DisenioWeb2/backEnd/public/register"" class="text-yellow-300 font-semibold">Regístrate</a>
     </p>
 
 </div>
+
+<?php if(!empty($error)) : ?>
+<script>
+    // Mostrar alerta solo si hay error (no al recargar la página)
+    document.addEventListener("DOMContentLoaded", function() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '<?= htmlspecialchars($error) ?>'
+        });
+    });
+</script>
+<?php endif; ?>
 
 </body>
 </html>
