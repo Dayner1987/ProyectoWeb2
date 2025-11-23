@@ -38,51 +38,56 @@ $success = $success ?? '';
     <!-- FORMULARIO -->
     <form action="/DisenioWeb2/backEnd/public/usuarios/create" method="POST">
 
-        <div>
-            <label class="text-white font-semibold">Nombre completo</label>
-            <div class="relative">
-                <i class="fa-solid fa-user absolute left-3 top-3 text-white/70"></i>
-                <input type="text" name="nombreUsuario" placeholder="Juan Pérez"
-                       class="w-full pl-10 pr-4 py-2 rounded-xl bg-white/30 text-white placeholder-white/70 focus:outline-none"
-                       required>
-            </div>
+    <div>
+        <label class="text-white font-semibold">Nombre completo</label>
+        <div class="relative">
+            <i class="fa-solid fa-user absolute left-3 top-3 text-white/70"></i>
+            <input type="text" name="nombreUsuario" placeholder="Juan Pérez"
+                   class="w-full pl-10 pr-4 py-2 rounded-xl bg-white/30 text-white placeholder-white/70 focus:outline-none"
+                   required>
         </div>
+    </div>
 
-        <div>
-            <label class="text-white font-semibold">CI</label>
-            <div class="relative">
-                <i class="fa-solid fa-id-card absolute left-3 top-3 text-white/70"></i>
-                <input type="text" name="ciUsuario" placeholder="12345678"
-                       class="w-full pl-10 pr-4 py-2 rounded-xl bg-white/30 text-white placeholder-white/70 focus:outline-none"
-                       required>
-            </div>
+    <div>
+        <label class="text-white font-semibold">CI</label>
+        <div class="relative">
+            <i class="fa-solid fa-id-card absolute left-3 top-3 text-white/70"></i>
+            <input type="text" name="ciUsuario" placeholder="12345678"
+                   class="w-full pl-10 pr-4 py-2 rounded-xl bg-white/30 text-white placeholder-white/70 focus:outline-none"
+                   required>
         </div>
+    </div>
 
-        <div>
-            <label class="text-white font-semibold">Correo electrónico</label>
-            <div class="relative">
-                <i class="fa-solid fa-envelope absolute left-3 top-3 text-white/70"></i>
-                <input type="email" name="mailUsuario" placeholder="usuario@gmail.com"
-                       class="w-full pl-10 pr-4 py-2 rounded-xl bg-white/30 text-white placeholder-white/70 focus:outline-none"
-                       required>
-            </div>
+    <div>
+        <label class="text-white font-semibold">Correo electrónico</label>
+        <div class="relative">
+            <i class="fa-solid fa-envelope absolute left-3 top-3 text-white/70"></i>
+            <input type="email" name="mailUsuario" placeholder="usuario@gmail.com"
+                   class="w-full pl-10 pr-4 py-2 rounded-xl bg-white/30 text-white placeholder-white/70 focus:outline-none"
+                   required>
         </div>
+    </div>
 
-        <div>
-            <label class="text-white font-semibold">Contraseña</label>
-            <div class="relative">
-                <i class="fa-solid fa-lock absolute left-3 top-3 text-white/70"></i>
-                <input type="password" name="password" placeholder="********"
-                       class="w-full pl-10 pr-4 py-2 rounded-xl bg-white/30 text-white placeholder-white/70 focus:outline-none"
-                       required>
-            </div>
+    <div>
+        <label class="text-white font-semibold">Contraseña</label>
+        <div class="relative">
+            <i class="fa-solid fa-lock absolute left-3 top-3 text-white/70"></i>
+            <input type="password" name="password" placeholder="********"
+                   class="w-full pl-10 pr-4 py-2 rounded-xl bg-white/30 text-white placeholder-white/70 focus:outline-none"
+                   required>
         </div>
+    </div>
 
-        <button type="submit"
-                class="w-full bg-indigo-700 hover:bg-indigo-800 text-white py-3 rounded-xl font-semibold shadow-lg transition mt-4">
-            Registrarse
-        </button>
-    </form>
+    <!-- === ROL AGREGADO === -->
+
+    <!-- ==================== -->
+
+    <button type="submit"
+            class="w-full bg-indigo-700 hover:bg-indigo-800 text-white py-3 rounded-xl font-semibold shadow-lg transition mt-4">
+        Registrarse
+    </button>
+</form>
+
 
     <p class="text-white mt-6 text-center">
         ¿Ya tienes cuenta?

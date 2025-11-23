@@ -41,26 +41,27 @@ class Usuario {
     // CREATE USER (HASH PASSWORD)
     // ================================
     // Modelo Usuario.php
-public function create(string $nombre, string $ci, string $mail, string $password, int $rolId) {
+public function create(string $nombre, string $ci, string $mail, string $passwordHash, int $rolId) {
     try {
         $sql = "INSERT INTO Usuarios (nombreUsuario, ciUsuario, mailUsuario, password, Roles_idRoles)
                 VALUES (:nombre, :ci, :mail, :pass, :rol)";
         $stmt = $this->conn->prepare($sql);
 
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
+        // NO volver a hashear
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':ci', $ci);
         $stmt->bindParam(':mail', $mail);
-        $stmt->bindParam(':pass', $hashedPassword);
+        $stmt->bindParam(':pass', $passwordHash);
         $stmt->bindParam(':rol', $rolId, PDO::PARAM_INT);
 
         return $stmt->execute();
+
     } catch (PDOException $e) {
         echo "Error PDO: " . $e->getMessage();
         return false;
     }
 }
+
 
 
     // ================================
@@ -117,7 +118,7 @@ public function create(string $nombre, string $ci, string $mail, string $passwor
         return $stmt->execute();
     }
 
-        public function createCliente($nombre, $ci, $mail, $password)
+       /* public function createCliente($nombre, $ci, $mail, $password)
 {
     try {
         $sql = "INSERT INTO Usuarios (nombreUsuario, ciUsuario, mailUsuario, password, Roles_idRoles)
@@ -137,7 +138,7 @@ public function create(string $nombre, string $ci, string $mail, string $passwor
         echo "Error PDO: " . $e->getMessage();
         return false;
     }
-}
+}*/
 // Usuario.php
 public function getByUsuario(string $usuario)
 {

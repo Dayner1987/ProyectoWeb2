@@ -14,7 +14,6 @@ class UsuarioController {
         echo json_encode($usuarios);
     }
 
- // UsuarioController.php
 public function store() {
     $error = '';
     $success = '';
@@ -24,6 +23,9 @@ public function store() {
         $ci = $_POST['ciUsuario'] ?? null;
         $mail = $_POST['mailUsuario'] ?? null;
         $password = $_POST['password'] ?? null;
+        $rol = isset($_POST['rol']) ? (int) $_POST['rol'] : 3; // FORZAR INT
+
+
 
         if (!$nombre || !$ci || !$mail || !$password) {
             $error = 'Faltan datos';
@@ -31,19 +33,19 @@ public function store() {
             $usuarioModel = new \Dell5480\BackEnd\Models\Usuario();
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-            $resultado = $usuarioModel->createCliente($nombre, $ci, $mail, $passwordHash);
+            $resultado = $usuarioModel->create($nombre, $ci, $mail, $passwordHash, $rol);
 
             if ($resultado) {
-                $success = 'Cliente registrado correctamente';
+                $success = 'Usuario registrado correctamente';
             } else {
-                $error = 'Error al registrar cliente';
+                $error = 'Error al registrar usuario';
             }
         }
     }
 
-    // Incluir la vista con $error y $success
     include __DIR__ . '/../Views/register.php';
 }
+
 
     // Crear usuario genérico (admin o empleado)
     public function createUser() {
