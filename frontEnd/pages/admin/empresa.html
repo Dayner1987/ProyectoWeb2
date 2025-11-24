@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Empresa - Admin</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .primary-orange { background-color: #f97316; }
+        .primary-blue { background-color: #2563eb; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    <!-- Navbar -->
+    <header class="primary-blue text-white p-4 shadow-md flex justify-between items-center">
+        <h1 class="text-2xl font-semibold">Administrar Empresa</h1>
+        <a href="indexAdmin.html" class="px-4 py-2 bg-orange-500 rounded hover:bg-orange-600 transition">Volver</a>
+    </header>
+
+    <main class="p-8 max-w-3xl mx-auto">
+
+        <form id="empresaForm" class="bg-white p-6 rounded-xl shadow-md space-y-4" enctype="multipart/form-data">
+
+            <h2 class="text-xl font-semibold text-primary-blue mb-4">Información de la Empresa</h2>
+
+            <input type="hidden" id="idEmpresa" name="idEmpresa">
+            <input type="hidden" id="currentLogo" name="currentLogo">
+            <input type="hidden" id="currentQR" name="currentQR">
+
+            <!-- Nombre -->
+            <div>
+                <label class="block text-gray-700 font-semibold mb-1">Nombre de la Empresa</label>
+                <input type="text" id="nombreEmpresa" name="nombreEmpresa"
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-blue">
+            </div>
+
+            <!-- Logo -->
+            <div>
+                <label class="block text-gray-700 font-semibold mb-1">Logo</label>
+                <input type="file" id="imageLogo" name="imageLogo" accept="image/*" class="block mb-2">
+                <img id="previewLogo" class="h-24 mb-2" src="" alt="Logo empresa">
+            </div>
+
+            <!-- QR -->
+            <div>
+                <label class="block text-gray-700 font-semibold mb-1">Código QR</label>
+                <input type="file" id="imageQR" name="imageQR" accept="image/*" class="block mb-2">
+                <img id="previewQR" class="h-24 mb-2" src="" alt="QR empresa">
+            </div>
+
+            <!-- Teléfono -->
+            <div>
+                <label class="block text-gray-700 font-semibold mb-1">Teléfono</label>
+                <input type="text" id="numeroE" name="numeroE"
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-blue">
+            </div>
+
+            <!-- Correo -->
+            <div>
+                <label class="block text-gray-700 font-semibold mb-1">Correo electrónico</label>
+                <input type="email" id="correoE" name="correoE"
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-blue">
+            </div>
+
+            <!-- Dirección -->
+            <div>
+                <label class="block text-gray-700 font-semibold mb-1">Dirección</label>
+                <input type="text" id="DireccionE" name="DireccionE"
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-blue">
+            </div>
+
+            <button type="submit"
+                class="w-full bg-primary-orange text-white py-3 rounded font-semibold hover:bg-orange-600 transition">
+                Guardar Cambios
+            </button>
+        </form>
+    </main>
+
+    <script>
+        // Cargar datos de la empresa al abrir la página
+        async function cargarEmpresa() {
+            try {
+                const res = await fetch('/DisenioWeb2/backEnd/public/empresa/show');
+                const data = await res.json();
+
+                document.getElementById('idEmpresa').value = data.idEmpresa;
+                document.getElementById('nombreEmpresa').value = data.nombreEmpresa || '';
+                document.getElementById('numeroE').value = data.numeroE || '';
+                document.getElementById('correoE').value = data.correoE || '';
+                document.getElementById('DireccionE').value = data.DireccionE || '';
+
+                document.getElementById('currentLogo').value = data.imageLogo || '';
+                document.getElementById('currentQR').value = data.imageQR || '';
+
+                if(data.imageLogo) document.getElementById('previewLogo').src = data.imageLogo;
+                if(data.imageQR) document.getElementById('previewQR').src = data.imageQR;
+
+            } catch (error) {
+                console.error('Error cargando empresa:', error);
+            }
+        }
+
+        cargarEmpresa();
+
+        // Previsualización de imágenes
+        document.getElementById('imageLogo').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if(file) document.getElementById('previewLogo').src = URL.createObjectURL(file);
+        });
+
+        document.getElementById('imageQR').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if(file) document.getElementById('previewQR').src = URL.createObjectURL(file);
+        });
+
+        // Enviar formulario con imágenes
+        document.getElementById('empresaForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            try {
+                const res = await fetch('/DisenioWeb2/backEnd/public/empresa/update', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await res.json();
+
+                if(data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Actualizado correctamente',
+                        timer: 1500,
+                        showConfirmButton: false
+                    }).then(() => location.reload());
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al actualizar',
+                        text: data.message || ''
+                    });
+                }
+            } catch(err) {
+                console.error(err);
+            }
+        });
+    </script>
+
+</body>
+</html>

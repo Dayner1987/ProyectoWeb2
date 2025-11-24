@@ -3,7 +3,10 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Dell5480\BackEnd\Controllers\AuthController;
+use Dell5480\BackEnd\Controllers\DisponibilidadController;
 use Dell5480\BackEnd\Controllers\HomeController;
+use Dell5480\BackEnd\Controllers\ReservaController;
+use Dell5480\BackEnd\Controllers\ServicioController;
 use Dell5480\BackEnd\Controllers\UsuarioController;
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -49,6 +52,50 @@ switch (true) {
     case ($uri === '/register'):
         require __DIR__ . '/../app/Views/register.php';
         break;
+        // --- SERVICIOS ---
+    case ($uri === '/servicios' && $method === 'GET'):
+        (new ServicioController())->index();
+        break;
+
+    case ($uri === '/servicios/create' && $method === 'POST'):
+        (new ServicioController())->store();
+        break;
+
+    case (preg_match('/^\/servicios\/update\/(\d+)$/', $uri, $m) && $method === 'POST'):
+        (new ServicioController())->update($m[1]);
+        break;
+
+    case (preg_match('/^\/servicios\/delete\/(\d+)$/', $uri, $m) && $method === 'POST'):
+        (new ServicioController())->destroy($m[1]);
+        break;
+
+    // --- DISPONIBILIDADES ---
+    case ($uri === '/disponibilidades' && $method === 'GET'):
+        (new DisponibilidadController())->index();
+        break;
+
+    case ($uri === '/disponibilidades/create' && $method === 'POST'):
+        (new DisponibilidadController())->store();
+        break;
+
+    // --- RESERVAS ---
+    case ($uri === '/reservas' && $method === 'GET'):
+        (new ReservaController())->index();
+        break;
+
+    case ($uri === '/reservas/create' && $method === 'POST'):
+        (new ReservaController())->store();
+        break;
+    
+            // --- EMPRESA ---
+    case ($uri === '/empresa' && $method === 'GET'):
+        (new \Dell5480\BackEnd\Controllers\EmpresaController())->show();
+        break;
+
+    case ($uri === '/empresa/update' && $method === 'POST'):
+        (new \Dell5480\BackEnd\Controllers\EmpresaController())->update();
+        break;
+
 
     // --- DEFAULT ---
     default:

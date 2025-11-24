@@ -1,102 +1,33 @@
-/* Reset simple */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Personalizaciones adicionales para Tailwind */
+
+/* Colores personalizados de la peluquería */
+.bg-peluqueria {
+    background-color: #0c20d1; /* navbar rojo */
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ff4e50, #f9d423); /* degradé rojo anaranjado */
-    color: #fff;
-    min-height: 100vh;
+.text-peluqueria {
+    color: #2c0ed4;
 }
 
-/* Encabezado */
-header {
-    background: rgba(0, 0, 0, 0.5); /* semi-transparente para contraste */
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #fff;
+.text-peluqueria-hover:hover {
+    color: #ffd700; /* amarillo al hover */
 }
 
-header .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #fff;
-}
-
-.nav-menu {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-}
-
-.nav-menu li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-menu li a:hover {
-    color: #ffd700; /* dorado suave al pasar el mouse */
-}
-
-/* Contenedor principal */
-.container {
-    max-width: 1000px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.text-center {
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-/* Galería de imágenes */
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.gallery img {
-    width: 250px;
-    height: 200px;
-    object-fit: cover;
+/* Galería */
+.gallery-img {
     border-radius: 8px;
-    cursor: pointer;
+    border: 2px solid #0c0101;
     transition: transform 0.2s, box-shadow 0.2s;
-    border: 3px solid #fff;
 }
 
-.gallery img:hover {
+.gallery-img:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-/* Pie de página */
-footer {
-    text-align: center;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    margin-top: 2rem;
-    border-top: 2px solid #fff;
-}
-
-/* Encabezados dentro de main */
-h2 {
-    font-size: 2rem;
-    color: #fff;
-}
-
-p {
-    font-size: 1.1rem;
-    color: #f8f8f8;
+/* Footer personalizado */
+.footer-bg {
+    background-color: #0e0101;
+    color: #555;
+    border-top: 1px solid #050000;
 }
