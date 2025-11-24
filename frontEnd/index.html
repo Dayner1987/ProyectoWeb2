@@ -26,21 +26,21 @@
     <div class="fixed inset-0 -z-10 bg-cover bg-center opacity-95" id="fondoPersonalizado"></div>
 
     <!-- Navbar moderno -->
-    <header id="navbar" class="bg-gradient-to-r from-blue-400 to-blue-600 shadow-lg fixed w-full z-50">
+    <header id="navbar" class="bg-transparent fixed w-full z-50 transition-colors duration-500 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
-                <!-- LOGO + NOMBRE -->
+               
                 <div class="flex items-center gap-4">
-                    <span id="empresaNombre" class="text-3xl font-bold text-cyan-200 drop-shadow-md">Peluquería Reflejos</span>
+                    <span id="empresaNombre" class="text-3xl font-bold text-orange-400 drop-shadow-md">Peluquería Reflejos</span>
                 </div>
 
                 <!-- Menú escritorio -->
                 <nav class="hidden md:flex items-center space-x-10 text-lg">
-                    <a href="#inicio" class="text-cyan-100 hover:text-white transition">Inicio</a>
-                    <a href="#nosotros" class="text-cyan-100 hover:text-white transition">Sobre Nosotros</a>
-                    <a href="#servicios" class="text-cyan-100 hover:text-white transition">Servicios</a>
-                    <a href="#portafolio" class="text-cyan-100 hover:text-white transition">Portafolio</a>
-                    <a href="/DisenioWeb2/backEnd/public/login" class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-white font-semibold transition">Iniciar Sesión</a>
+                    <a href="#inicio" class="text-orange-400 hover:text-orange-300 transition">Inicio</a>
+                    <a href="#nosotros" class="text-orange-400 hover:text-orange-300 transition">Sobre Nosotros</a>
+                    <a href="#servicios" class="text-orange-400 hover:text-orange-300 transition">Servicios</a>
+                    <a href="#portafolio" class="text-orange-400 hover:text-orange-300 transition">Portafolio</a>
+                    <a href="/DisenioWeb2/backEnd/public/login" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-semibold transition">Iniciar Sesión</a>
                 </nav>
 
                 <!-- Menú Hamburguesa -->
@@ -53,62 +53,67 @@
         </div>
 
         <!-- Menú móvil -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2 text-cyan-100 text-lg">
-            <a href="#inicio" class="block hover:text-white">Inicio</a>
-            <a href="#nosotros" class="block hover:text-white">Sobre Nosotros</a>
-            <a href="#servicios" class="block hover:text-white">Servicios</a>
-            <a href="#portafolio" class="block hover:text-white">Portafolio</a>
-            <a href="/DisenioWeb2/backEnd/public/login" class="block hover:text-white font-semibold">Iniciar Sesión</a>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2 text-orange-400 text-lg">
+            <a href="#inicio" class="block hover:text-orange-300">Inicio</a>
+            <a href="#nosotros" class="block hover:text-orange-300">Sobre Nosotros</a>
+            <a href="#servicios" class="block hover:text-orange-300">Servicios</a>
+            <a href="#portafolio" class="block hover:text-orange-300">Portafolio</a>
+            <a href="/DisenioWeb2/backEnd/public/login" class="block hover:text-orange-300 font-semibold">Iniciar Sesión</a>
         </div>
     </header>
 
     <!-- Contenido principal -->
     <main class="pt-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col md:flex-row gap-6 items-center" data-aos="fade-up">
-        <!-- Logo dinámico de la empresa -->
-        <img id="empresaLogo" src="img/default-logo.png" alt="Logo Empresa" class="w-64 rounded-xl shadow-md" data-aos="fade-right">
+      <div class="rounded-2xl shadow-xl p-6 flex flex-col md:flex-row gap-6 items-center 
+            bg-gradient-to-r from-orange-400 via-orange-300 to-yellow-200" 
+     data-aos="fade-up">
+    <!-- Logo dinámico de la empresa -->
+    <img id="empresaLogo" src="img/default-logo.png" alt="Logo Empresa" class="w-64 rounded-xl shadow-md" data-aos="fade-right">
 
-        <div data-aos="fade-left">
-            <h2 class="text-4xl font-bold text-blue-600 mb-4">
-                Bienvenidos a <span id="empresaNombreHeader">Peluquería Reflejos</span>
-            </h2>
-            <p class="text-gray-700 mb-6">Transformamos tu estilo con cortes modernos y atención profesional.</p>
-        </div>
+    <div data-aos="fade-left">
+        <h2 class="text-4xl font-bold text-white mb-4">
+            Bienvenidos a <span id="empresaNombreHeader">Reflejos</span>
+        </h2>
+        <p class="text-white/90 mb-6">
+            Transformamos tu estilo con cortes modernos y atención profesional.
+        </p>
     </div>
+</div>
 
-        <!-- Galería -->
-        <section class="gallery flex flex-wrap justify-center gap-6 mt-10">
-            <a class="example-image-link" href="img/image2.jpg" data-lightbox="example-set" data-title="Corte femenino moderno">
-                <img class="rounded shadow-xl hover:scale-105 transition-transform gallery-img" src="img/image1.jpg" alt="Mujer con un nuevo corte." width="260">
-            </a>
-            <a class="example-image-link" href="img/image3.jpg" data-lightbox="example-set" data-title="Corte masculino clásico">
-                <img class="rounded shadow-xl hover:scale-105 transition-transform gallery-img" src="img/image2.jpg" alt="Corte de varón." width="260">
-            </a>
-            <a class="example-image-link" href="img/image1.jpg" data-lightbox="example-set" data-title="Barba premium y cuidado facial">
-                <img class="rounded shadow-xl hover:scale-105 transition-transform gallery-img" src="img/image3.jpg" alt="Barba premium." width="260">
-            </a>
-        </section>
 
-        <!-- Sección de info -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-            <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-10 items-center" data-aos="fade-up">
-                <img src="img/image1.jpg" alt="Ejemplo" class="w-80 rounded-xl shadow-lg" data-aos="fade-right">
-                <div data-aos="fade-left">
-                    <h3 class="text-3xl font-bold text-blue-600 mb-4">Tu Mejor Estilo Te Espera</h3>
-                    <p class="text-gray-700 leading-relaxed mb-6">
-                        Nuestro equipo altamente capacitado te brinda cortes modernos, tintes profesionales y una atención personalizada.
-                    </p>
-                    <button class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg transition-transform hover:scale-105" data-aos="zoom-in">Agendar Cita</button>
-                </div>
-            </div>
-        </section>
+      <!-- Galería -->
+      <section class="gallery flex flex-wrap justify-center gap-6 mt-10">
+          <a class="example-image-link" href="img/image2.jpg" data-lightbox="example-set" data-title="Corte femenino moderno">
+              <img class="rounded shadow-xl hover:scale-105 transition-transform gallery-img" src="img/image1.jpg" alt="Mujer con un nuevo corte." width="260">
+          </a>
+          <a class="example-image-link" href="img/image3.jpg" data-lightbox="example-set" data-title="Corte masculino clásico">
+              <img class="rounded shadow-xl hover:scale-105 transition-transform gallery-img" src="img/image2.jpg" alt="Corte de varón." width="260">
+          </a>
+          <a class="example-image-link" href="img/image1.jpg" data-lightbox="example-set" data-title="Barba premium y cuidado facial">
+              <img class="rounded shadow-xl hover:scale-105 transition-transform gallery-img" src="img/image3.jpg" alt="Barba premium." width="260">
+          </a>
+      </section>
+
+      <!-- Sección de info -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+          <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-10 items-center" data-aos="fade-up">
+              <img src="img/image1.jpg" alt="Ejemplo" class="w-80 rounded-xl shadow-lg" data-aos="fade-right">
+              <div data-aos="fade-left">
+                  <h3 class="text-3xl font-bold text-orange-400 mb-4">Tu Mejor Estilo Te Espera</h3>
+                  <p class="text-gray-700 leading-relaxed mb-6">
+                      Nuestro equipo altamente capacitado te brinda cortes modernos, tintes profesionales y una atención personalizada.
+                  </p>
+                  <button class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-lg transition-transform hover:scale-105" data-aos="zoom-in">Agendar Cita</button>
+              </div>
+          </div>
+      </section>
     </main>
 
     <!-- Footer dinámico con fondo negro y acento naranja -->
     <footer class="mt-20 bg-black text-white py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-6">
             <div class="flex flex-col items-start gap-2">
-                <img id="empresaLogoFooter" src="img/default-logo.png" alt="Logo Empresa" class="w-28 rounded mb-2">
+                <img id="empresaLogo2" src="img/default-logo.png" alt="Logo Empresa" class="w-64 rounded-xl shadow-md" data-aos="fade-right">
                 <h2 id="empresaNombreFooter" class="text-xl font-bold text-orange-500">Peluquería Reflejos</h2>
             </div>
             <div class="flex flex-col gap-2">
