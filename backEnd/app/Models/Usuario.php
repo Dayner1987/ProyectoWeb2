@@ -18,13 +18,18 @@ class Usuario {
     // GET ALL USERS
     // ================================
     public function getAll() {
-        $sql = "SELECT u.idUsuarios, u.ciUsuario, u.mailUsuario, u.nombreUsuario, 
-                       u.apellidoUsuario, r.nombreRol
-                FROM Usuarios u
-                INNER JOIN Roles r ON u.Roles_idRoles = r.idRoles";
+    $sql = "SELECT 
+                u.idUsuarios,
+                u.ciUsuario,
+                u.mailUsuario,
+                u.nombreUsuario,
+                u.Roles_idRoles,
+                r.nombreRol
+            FROM Usuarios u
+            INNER JOIN Roles r ON u.Roles_idRoles = r.idRoles";
 
-        return $this->conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-    }
+    return $this->conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+}
 
     // ================================
     // GET BY ID
@@ -77,7 +82,6 @@ public function create(string $nombre, string $ci, string $mail, string $passwor
                         ciUsuario = :ci,
                         mailUsuario = :mail,
                         nombreUsuario = :nombre,
-                        apellidoUsuario = :apellido,
                         password = :pass,
                         Roles_idRoles = :rol
                     WHERE idUsuarios = :id";
@@ -91,7 +95,6 @@ public function create(string $nombre, string $ci, string $mail, string $passwor
                         ciUsuario = :ci,
                         mailUsuario = :mail,
                         nombreUsuario = :nombre,
-                        apellidoUsuario = :apellido,
                         Roles_idRoles = :rol
                     WHERE idUsuarios = :id";
 
@@ -101,7 +104,6 @@ public function create(string $nombre, string $ci, string $mail, string $passwor
         $stmt->bindParam(':ci', $data['ciUsuario']);
         $stmt->bindParam(':mail', $data['mailUsuario']);
         $stmt->bindParam(':nombre', $data['nombreUsuario']);
-        $stmt->bindParam(':apellido', $data['apellidoUsuario']);
         $stmt->bindParam(':rol', $data['rol']);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 

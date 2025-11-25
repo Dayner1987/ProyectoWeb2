@@ -46,41 +46,53 @@ public function store() {
     include __DIR__ . '/../Views/register.php';
 }
 
+public function createUser() {
+    // Forzar JSON como salida
+    header('Content-Type: application/json');
 
-    // Crear usuario genérico (admin o empleado)
-    public function createUser() {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Content-Type: application/json');
-            echo json_encode(['success' => false, 'message' => 'Método no permitido']);
-            return;
-        }
-
-        $data = json_decode(file_get_contents('php://input'), true);
-
-        if (!isset($data['nombreUsuario'], $data['ciUsuario'], $data['mailUsuario'], $data['password'], $data['Roles_idRoles'])) {
-            header('Content-Type: application/json');
-            echo json_encode(['success' => false, 'message' => 'Faltan datos obligatorios']);
-            return;
-        }
-
-        $passwordHash = password_hash($data['password'], PASSWORD_DEFAULT);
-
-        $usuarioModel = new Usuario();
-        $resultado = $usuarioModel->create(
-            $data['nombreUsuario'],
-            $data['ciUsuario'],
-            $data['mailUsuario'],
-            $passwordHash,
-            (int)$data['Roles_idRoles']
-        );
-
-        header('Content-Type: application/json');
-        if ($resultado) {
-            echo json_encode(['success' => true, 'message' => 'Usuario creado correctamente']);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Error al crear usuario']);
-        }
+    // Solo POST permitido
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+        return;
     }
+
+    // Leer datos del JSON enviado desde frontend
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    // Validar campos obligatorios
+    if (!isset($data['nombreUsuario'], $data['ciUsuario'], $data['mailUsuario'], $data['password'], $data['Roles_idRoles'])) {
+        echo json_encode(['success' => false, 'message' => 'Faltan datos obligatorios']);
+        return;
+    }
+
+    $usuarioModel = new Usuario();
+
+    // Verificar si el usuario ya existe por email o CI
+    $existingUser = $usuarioModel->getByUsuario($data['mailUsuario']);
+    if ($existingUser) {
+        echo json_encode(['success' => false, 'message' => 'El usuario ya existe']);
+        return;
+    }
+
+    // Hashear la contraseña
+    $passwordHash = password_hash($data['password'], PASSWORD_DEFAULT);
+
+    // Crear usuario
+    $resultado = $usuarioModel->create(
+        $data['nombreUsuario'],
+        $data['ciUsuario'],
+        $data['mailUsuario'],
+        $passwordHash,
+        (int)$data['Roles_idRoles']
+    );
+
+    // Responder según el resultado
+    if ($resultado) {
+        echo json_encode(['success' => true, 'message' => 'Usuario creado correctamente']);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Error al crear usuario']);
+    }
+}
 
     // Actualizar usuario
     public function update($id) {

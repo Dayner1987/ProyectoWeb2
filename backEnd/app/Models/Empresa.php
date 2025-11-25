@@ -5,23 +5,27 @@ use Dell5480\BackEnd\Config\Database;
 use PDO;
 use PDOException;
 
-class Empresa {
+class Empresa 
+{
     private PDO $conn;
 
-    public function __construct() {
+    public function __construct() 
+    {
         $db = new Database();
         $this->conn = $db->connect();
     }
 
     // Obtener la información de la empresa (suponiendo que solo hay un registro)
-    public function getEmpresa() {
+    public function getEmpresa() 
+    {
         $sql = "SELECT * FROM Empresa LIMIT 1";
         $stmt = $this->conn->query($sql);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     // Actualizar la información de la empresa
-  public function updateEmpresa($data) {
+  public function updateEmpresa($data) 
+  {
     try {
         $sql = "UPDATE Empresa SET
                     nombreEmpresa = :nombre,

@@ -96,6 +96,11 @@ switch (true) {
         (new \Dell5480\BackEnd\Controllers\EmpresaController())->update();
         break;
 
+    case ($uri === '/usuarios/createUser' && $method === 'POST'):
+        (new UsuarioController())->createUser();
+        break;
+
+
 
     // --- DEFAULT ---
     default:

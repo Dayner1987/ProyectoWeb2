@@ -13,8 +13,10 @@
 
     <style>
         body { font-family: 'Poppins', sans-serif; }
-        .primary-orange { background-color: #f97316; }
-        .primary-blue { background-color: #2563eb; }
+        .primary-orange { background: linear-gradient(to right, #f11d01, #d40a0a); }
+        .primary-blue { background: linear-gradient(to right, #e00b04, #bb7103); }
+        input:focus { box-shadow: 0 0 0 2px rgba(1, 5, 15, 0.5); }
+        button:hover { transform: translateY(-2px); }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
@@ -25,135 +27,173 @@
         <a href="indexAdmin.html" class="px-4 py-2 bg-orange-500 rounded hover:bg-orange-600 transition">Volver</a>
     </header>
 
-    <main class="p-8 max-w-3xl mx-auto">
+<main class="p-8 max-w-3xl mx-auto space-y-8">
 
-        <form id="empresaForm" class="bg-white p-6 rounded-xl shadow-md space-y-4" enctype="multipart/form-data">
+    <!-- Recuadro de preview -->
+    <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-center gap-6">
+        <div class="flex flex-col items-center gap-2">
+            <img id="previewEmpresaLogo" class="h-24 w-24 rounded shadow-md" src="img/default-logo.png" alt="Logo empresa">
+            <span class="text-gray-700 font-semibold">Logo actual</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+            <img id="previewEmpresaQR" class="h-24 w-24 rounded shadow-md" src="img/default-qr.png" alt="QR empresa">
+            <span class="text-gray-700 font-semibold">QR actual</span>
+        </div>
+        <div class="flex-1 text-gray-700 space-y-1">
+            <p><strong>Nombre:</strong> <span id="previewEmpresaNombre">Reflejos</span></p>
+            <p><strong>Teléfono:</strong> <span id="previewEmpresaTelefono">+591 77975489</span></p>
+            <p><strong>Correo:</strong> <span id="previewEmpresaCorreo">info@peluqueria.com</span></p>
+            <p><strong>Dirección:</strong> <span id="previewEmpresaDireccion">Calle Falsa 123, La Paz</span></p>
+        </div>
+    </div>
 
-            <h2 class="text-xl font-semibold text-primary-blue mb-4">Información de la Empresa</h2>
+    <!-- Formulario -->
+    <form id="empresaForm" class="bg-orange-50 border border-orange-300 rounded-xl shadow-lg p-6 space-y-4" enctype="multipart/form-data">
+        <h2 class="text-xl font-semibold text-primary-blue mb-4">Información de la Empresa</h2>
 
-            <input type="hidden" id="idEmpresa" name="idEmpresa">
-            <input type="hidden" id="currentLogo" name="currentLogo">
-            <input type="hidden" id="currentQR" name="currentQR">
+        <input type="hidden" id="idEmpresa" name="idEmpresa">
+        <input type="hidden" id="currentLogo" name="currentLogo">
+        <input type="hidden" id="currentQR" name="currentQR">
 
-            <!-- Nombre -->
-            <div>
-                <label class="block text-gray-700 font-semibold mb-1">Nombre de la Empresa</label>
-                <input type="text" id="nombreEmpresa" name="nombreEmpresa"
-                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-blue">
-            </div>
+        <!-- Nombre -->
+        <div>
+            <label class="block text-gray-700 font-semibold mb-1">Nombre de la Empresa</label>
+            <input type="text" id="nombreEmpresa" name="nombreEmpresa"
+                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-blue transition">
+        </div>
 
-            <!-- Logo -->
-            <div>
-                <label class="block text-gray-700 font-semibold mb-1">Logo</label>
-                <input type="file" id="imageLogo" name="imageLogo" accept="image/*" class="block mb-2">
-                <img id="previewLogo" class="h-24 mb-2" src="" alt="Logo empresa">
-            </div>
+        <!-- Logo -->
+        <div>
+            <label class="block text-gray-700 font-semibold mb-1">Logo</label>
+            <input type="file" id="imageLogo" name="imageLogo" accept="image/*" class="block mb-2">
+            <img id="previewLogo" class="h-24 mb-2 rounded shadow-sm" src="" alt="Logo empresa">
+        </div>
 
-            <!-- QR -->
-            <div>
-                <label class="block text-gray-700 font-semibold mb-1">Código QR</label>
-                <input type="file" id="imageQR" name="imageQR" accept="image/*" class="block mb-2">
-                <img id="previewQR" class="h-24 mb-2" src="" alt="QR empresa">
-            </div>
+        <!-- QR -->
+        <div>
+            <label class="block text-gray-700 font-semibold mb-1">Código QR</label>
+            <input type="file" id="imageQR" name="imageQR" accept="image/*" class="block mb-2">
+            <img id="previewQR" class="h-24 mb-2 rounded shadow-sm" src="" alt="QR empresa">
+        </div>
 
-            <!-- Teléfono -->
-            <div>
-                <label class="block text-gray-700 font-semibold mb-1">Teléfono</label>
-                <input type="text" id="numeroE" name="numeroE"
-                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-blue">
-            </div>
+        <!-- Teléfono -->
+        <div>
+            <label class="block text-gray-700 font-semibold mb-1">Teléfono</label>
+            <input type="text" id="numeroE" name="numeroE"
+                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-blue transition">
+        </div>
 
-            <!-- Correo -->
-            <div>
-                <label class="block text-gray-700 font-semibold mb-1">Correo electrónico</label>
-                <input type="email" id="correoE" name="correoE"
-                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-blue">
-            </div>
+        <!-- Correo -->
+        <div>
+            <label class="block text-gray-700 font-semibold mb-1">Correo electrónico</label>
+            <input type="email" id="correoE" name="correoE"
+                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-blue transition">
+        </div>
 
-            <!-- Dirección -->
-            <div>
-                <label class="block text-gray-700 font-semibold mb-1">Dirección</label>
-                <input type="text" id="DireccionE" name="DireccionE"
-                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-blue">
-            </div>
+        <!-- Dirección -->
+        <div>
+            <label class="block text-gray-700 font-semibold mb-1">Dirección</label>
+            <input type="text" id="DireccionE" name="DireccionE"
+                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-blue transition">
+        </div>
 
-            <button type="submit"
-                class="w-full bg-primary-orange text-white py-3 rounded font-semibold hover:bg-orange-600 transition">
-                Guardar Cambios
-            </button>
-        </form>
-    </main>
+        <button type="submit"
+    class="w-full border-2 border-primary-orange px-4 py-2 bg-orange-500 rounded hover:bg-orange-600 transition ">
+    Guardar Cambios
+</button>
 
-    <script>
-        // Cargar datos de la empresa al abrir la página
-        async function cargarEmpresa() {
-            try {
-                const res = await fetch('/DisenioWeb2/backEnd/public/empresa/show');
-                const data = await res.json();
+    </form>
 
-                document.getElementById('idEmpresa').value = data.idEmpresa;
-                document.getElementById('nombreEmpresa').value = data.nombreEmpresa || '';
-                document.getElementById('numeroE').value = data.numeroE || '';
-                document.getElementById('correoE').value = data.correoE || '';
-                document.getElementById('DireccionE').value = data.DireccionE || '';
+</main>
 
-                document.getElementById('currentLogo').value = data.imageLogo || '';
-                document.getElementById('currentQR').value = data.imageQR || '';
+<script>
+async function cargarEmpresa() {
+    try {
+        const res = await fetch('/DisenioWeb2/backEnd/public/empresa');
+        const data = await res.json();
 
-                if(data.imageLogo) document.getElementById('previewLogo').src = data.imageLogo;
-                if(data.imageQR) document.getElementById('previewQR').src = data.imageQR;
+        if(data){
+            const logoPath = data.imageLogo ? `/DisenioWeb2/backEnd/public${data.imageLogo}` : 'img/default-logo.png';
+            const qrPath   = data.imageQR ? `/DisenioWeb2/backEnd/public${data.imageQR}` : 'img/default-qr.png';
 
-            } catch (error) {
-                console.error('Error cargando empresa:', error);
-            }
+            // Previews arriba del formulario
+            document.getElementById('previewEmpresaLogo').src = logoPath;
+            document.getElementById('previewEmpresaQR').src = qrPath;
+            document.getElementById('previewEmpresaNombre').textContent = data.nombreEmpresa || 'Reflejos';
+            document.getElementById('previewEmpresaTelefono').textContent = data.numeroE || '+591 77975489';
+            document.getElementById('previewEmpresaCorreo').textContent = data.correoE || 'info@peluqueria.com';
+            document.getElementById('previewEmpresaDireccion').textContent = data.DireccionE || 'Calle Falsa 123, La Paz';
+
+            // Formulario
+            document.getElementById('idEmpresa').value = data.idEmpresa;
+            document.getElementById('nombreEmpresa').value = data.nombreEmpresa || '';
+            document.getElementById('numeroE').value = data.numeroE || '';
+            document.getElementById('correoE').value = data.correoE || '';
+            document.getElementById('DireccionE').value = data.DireccionE || '';
+            document.getElementById('currentLogo').value = data.imageLogo || '';
+            document.getElementById('currentQR').value = data.imageQR || '';
+
+            // Previews en formulario
+            document.getElementById('previewLogo').src = logoPath;
+            document.getElementById('previewQR').src = qrPath;
+        }
+    } catch(err){
+        console.error('Error cargando empresa:', err);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', cargarEmpresa);
+
+// Previsualización dinámica al seleccionar archivos
+document.getElementById('imageLogo').addEventListener('change', e => {
+    const file = e.target.files[0];
+    if(file) document.getElementById('previewLogo').src = URL.createObjectURL(file);
+});
+
+document.getElementById('imageQR').addEventListener('change', e => {
+    const file = e.target.files[0];
+    if(file) document.getElementById('previewQR').src = URL.createObjectURL(file);
+});
+
+// Enviar formulario con logo y QR
+document.getElementById('empresaForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    try {
+        const res = await fetch('/DisenioWeb2/backEnd/public/empresa/update', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await res.json();
+
+        if(data.success){
+            Swal.fire({
+                icon: 'success',
+                title: 'Actualizado correctamente',
+                timer: 1500,
+                showConfirmButton: false
+            }).then(() => location.reload());
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al actualizar',
+                text: data.message || ''
+            });
         }
 
-        cargarEmpresa();
-
-        // Previsualización de imágenes
-        document.getElementById('imageLogo').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if(file) document.getElementById('previewLogo').src = URL.createObjectURL(file);
+    } catch(err){
+        console.error(err);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error al actualizar',
+            text: 'Ocurrió un error en la petición.'
         });
-
-        document.getElementById('imageQR').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if(file) document.getElementById('previewQR').src = URL.createObjectURL(file);
-        });
-
-        // Enviar formulario con imágenes
-        document.getElementById('empresaForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-
-            try {
-                const res = await fetch('/DisenioWeb2/backEnd/public/empresa/update', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const data = await res.json();
-
-                if(data.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Actualizado correctamente',
-                        timer: 1500,
-                        showConfirmButton: false
-                    }).then(() => location.reload());
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error al actualizar',
-                        text: data.message || ''
-                    });
-                }
-            } catch(err) {
-                console.error(err);
-            }
-        });
-    </script>
+    }
+});
+</script>
 
 </body>
 </html>
