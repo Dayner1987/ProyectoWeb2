@@ -42,6 +42,14 @@ class Usuario {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getByCI($ciUsuario) {
+    $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE ciUsuario = :ci LIMIT 1");
+    $stmt->bindParam(':ci', $ciUsuario);
+    $stmt->execute();
+    return $stmt->fetch(\PDO::FETCH_ASSOC); // devuelve un usuario o false si no existe
+}
+
+
     // ================================
     // CREATE USER (HASH PASSWORD)
     // ================================
@@ -104,7 +112,7 @@ public function create(string $nombre, string $ci, string $mail, string $passwor
         $stmt->bindParam(':ci', $data['ciUsuario']);
         $stmt->bindParam(':mail', $data['mailUsuario']);
         $stmt->bindParam(':nombre', $data['nombreUsuario']);
-        $stmt->bindParam(':rol', $data['rol']);
+      $stmt->bindParam(':rol', $data['Roles_idRoles'], PDO::PARAM_INT);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
         return $stmt->execute();
@@ -120,37 +128,9 @@ public function create(string $nombre, string $ci, string $mail, string $passwor
         return $stmt->execute();
     }
 
-       /* public function createCliente($nombre, $ci, $mail, $password)
-{
-    try {
-        $sql = "INSERT INTO Usuarios (nombreUsuario, ciUsuario, mailUsuario, password, Roles_idRoles)
-                VALUES (:nombre, :ci, :mail, :pass, 3)";
-
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':nombre', $nombre);
-        $stmt->bindParam(':ci', $ci);
-        $stmt->bindParam(':mail', $mail);
-        $stmt->bindParam(':pass', $password);
-
-        $stmt->execute();
-        return true;
-
-    } catch (PDOException $e) {
-        // Muestra el error real de MySQL
-        echo "Error PDO: " . $e->getMessage();
-        return false;
-    }
-}*/
+ 
 // Usuario.php
-public function getByUsuario(string $usuario)
-{
-    $sql = "SELECT * FROM Usuarios WHERE mailUsuario = :usuario OR ciUsuario = :usuario LIMIT 1";
-    $stmt = $this->conn->prepare($sql);
-    $stmt->bindParam(':usuario', $usuario);
-    $stmt->execute();
 
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
 
 
 }

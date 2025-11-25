@@ -41,10 +41,6 @@ switch (true) {
         (new UsuarioController())->store();
         break;
 
-    case (preg_match('/^\/usuarios\/update\/(\d+)$/', $uri, $m) && $method === 'POST'):
-        (new UsuarioController())->update($m[1]);
-        break;
-
     case (preg_match('/^\/usuarios\/delete\/(\d+)$/', $uri, $m) && $method === 'POST'):
         (new UsuarioController())->destroy($m[1]);
         break;
@@ -99,6 +95,9 @@ switch (true) {
     case ($uri === '/usuarios/createUser' && $method === 'POST'):
         (new UsuarioController())->createUser();
         break;
+    case (preg_match('/^\/usuarios\/update\/(\d+)$/', $uri, $m) && $method === 'POST'):
+    (new UsuarioController())->update($m[1]);
+    break;
 
 
 
