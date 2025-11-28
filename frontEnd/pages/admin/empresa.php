@@ -24,7 +24,7 @@
     <!-- Navbar -->
     <header class="primary-blue text-white p-4 shadow-md flex justify-between items-center">
         <h1 class="text-2xl font-semibold">Administrar Empresa</h1>
-        <a href="indexAdmin.html" class="px-4 py-2 bg-orange-500 rounded hover:bg-orange-600 transition">Volver</a>
+        <a href="indexAdmin.php" class="px-4 py-2 bg-orange-500 rounded hover:bg-orange-600 transition">Volver</a>
     </header>
 
 <main class="p-8 max-w-3xl mx-auto space-y-8">

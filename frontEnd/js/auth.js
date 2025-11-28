@@ -17,9 +17,9 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     const payload = JSON.parse(atob(data.token.split(".")[1]));
     const rol = payload.data.rol;
 
-    if (rol === 1) window.location = "pages/admin/index.html";
-    if (rol === 2) window.location = "pages/empleado/index.html";
-    if (rol === 3) window.location = "pages/cliente/index.html";
+    if (rol === 1) window.location = "pages/admin/index.php";
+    if (rol === 2) window.location = "pages/empleado/index.php";
+    if (rol === 3) window.location = "pages/cliente/index.php";
   } else {
     alert("Usuario o contraseña incorrecta");
   }

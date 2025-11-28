@@ -3,49 +3,107 @@ namespace Dell5480\BackEnd\Models;
 
 use Dell5480\BackEnd\Config\Database;
 use PDO;
+use PDOException;
 
-class Disponibilidad {
+class Disponibilidad
+{
     private PDO $conn;
 
-    public function __construct() {
+    public function __construct()
+    {
         $db = new Database();
         $this->conn = $db->connect();
     }
 
-    public function getByEmpleado($empleadoId) {
-        $sql = "SELECT * FROM Disponibilidades WHERE empleado_id=:emp";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':emp', $empleadoId, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    /**
+     * Obtener todas las disponibilidades de un empleado
+     */
+    public function getByEmpleado($empleadoId)
+    {
+        try {
+            $sql = "SELECT 
+                        idDisponibilidad,
+                        empleado_id,
+                        fecha,
+                        horaInicio,
+                        horaFin
+                    FROM Disponibilidades
+                    WHERE empleado_id = :emp
+                    ORDER BY fecha ASC, horaInicio ASC";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':emp', $empleadoId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            return [];
+        }
     }
 
-    public function create($empleadoId, $fecha, $horaInicio, $horaFin) {
-        $sql = "INSERT INTO Disponibilidades (empleado_id, fecha, horaInicio, horaFin)
-                VALUES (:emp, :fecha, :inicio, :fin)";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':emp', $empleadoId, PDO::PARAM_INT);
-        $stmt->bindParam(':fecha', $fecha);
-        $stmt->bindParam(':inicio', $horaInicio);
-        $stmt->bindParam(':fin', $horaFin);
-        return $stmt->execute();
+    /**
+     * Crear disponibilidad
+     */
+    public function create($empleadoId, $fecha, $horaInicio, $horaFin)
+    {
+        try {
+            $sql = "INSERT INTO Disponibilidades (empleado_id, fecha, horaInicio, horaFin)
+                    VALUES (:emp, :fecha, :inicio, :fin)";
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->bindParam(':emp', $empleadoId, PDO::PARAM_INT);
+            $stmt->bindParam(':fecha', $fecha);
+            $stmt->bindParam(':inicio', $horaInicio);
+            $stmt->bindParam(':fin', $horaFin);
+
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
-    public function update($id, $fecha, $horaInicio, $horaFin) {
-        $sql = "UPDATE Disponibilidades SET fecha=:fecha, horaInicio=:inicio, horaFin=:fin
-                WHERE idDisponibilidad=:id";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':fecha', $fecha);
-        $stmt->bindParam(':inicio', $horaInicio);
-        $stmt->bindParam(':fin', $horaFin);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        return $stmt->execute();
+    /**
+     * Actualizar disponibilidad
+     */
+    public function update($id, $fecha, $horaInicio, $horaFin)
+    {
+        try {
+            $sql = "UPDATE Disponibilidades 
+                    SET fecha = :fecha, horaInicio = :inicio, horaFin = :fin
+                    WHERE idDisponibilidad = :id";
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->bindParam(':fecha', $fecha);
+            $stmt->bindParam(':inicio', $horaInicio);
+            $stmt->bindParam(':fin', $horaFin);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
-    public function delete($id) {
-        $sql = "DELETE FROM Disponibilidades WHERE idDisponibilidad=:id";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        return $stmt->execute();
+    /**
+     * Eliminar disponibilidad
+     */
+    public function delete($id)
+    {
+        try {
+            $sql = "DELETE FROM Disponibilidades WHERE idDisponibilidad = :id";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 }

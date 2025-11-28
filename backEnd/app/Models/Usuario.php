@@ -128,8 +128,25 @@ public function create(string $nombre, string $ci, string $mail, string $passwor
         return $stmt->execute();
     }
 
- 
 // Usuario.php
+public function getByUsuario($usuario)
+{
+    try {
+        $sql = "SELECT * FROM usuarios 
+                WHERE ciUsuario = :usuario 
+                OR mailUsuario = :usuario 
+                LIMIT 1";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $e) {
+        return null;
+    }
+}
 
 
 

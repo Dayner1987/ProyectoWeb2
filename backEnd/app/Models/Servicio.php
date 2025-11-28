@@ -45,4 +45,14 @@ class Servicio {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
+      public function getByEmpleado($empleadoId) {
+        $sql = "SELECT s.* 
+                FROM Servicios s
+                INNER JOIN Servicios_Empleados se ON s.idServicios = se.servicio_id
+                WHERE se.empleado_id = :emp";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':emp', $empleadoId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

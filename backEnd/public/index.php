@@ -8,10 +8,30 @@ use Dell5480\BackEnd\Controllers\HomeController;
 use Dell5480\BackEnd\Controllers\ReservaController;
 use Dell5480\BackEnd\Controllers\ServicioController;
 use Dell5480\BackEnd\Controllers\UsuarioController;
+use Dell5480\BackEnd\Controllers\ServiciosEmpleadoController;
 
+// ======================================================
+// NORMALIZAR URI
+// ======================================================
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+// Eliminar prefijo del proyecto
 $uri = str_replace('/DisenioWeb2/backEnd/public', '', $uri);
+
+// Quitar espacios y slashes duplicados
+$uri = trim($uri);
+$uri = rtrim($uri, '/');
+
+// Asegurar que siempre empiece con "/"
+if ($uri === '' || $uri[0] !== '/') {
+    $uri = '/' . $uri;
+}
+
 $method = $_SERVER['REQUEST_METHOD'];
+
+// ======================================================
+// ROUTER
+// ======================================================
 
 switch (true) {
 
@@ -32,7 +52,10 @@ switch (true) {
         (new HomeController())->cliente();
         break;
 
-    // --- USUARIOS ---
+
+    // ======================================================
+    // USUARIOS
+    // ======================================================
     case ($uri === '/usuarios' && $method === 'GET'):
         (new UsuarioController())->index();
         break;
@@ -45,10 +68,22 @@ switch (true) {
         (new UsuarioController())->destroy($m[1]);
         break;
 
+    case ($uri === '/usuarios/createUser' && $method === 'POST'):
+        (new UsuarioController())->createUser();
+        break;
+
+    case (preg_match('/^\/usuarios\/update\/(\d+)$/', $uri, $m) && $method === 'POST'):
+        (new UsuarioController())->update($m[1]);
+        break;
+
     case ($uri === '/register'):
         require __DIR__ . '/../app/Views/register.php';
         break;
-        // --- SERVICIOS ---
+
+
+    // ======================================================
+    // SERVICIOS
+    // ======================================================
     case ($uri === '/servicios' && $method === 'GET'):
         (new ServicioController())->index();
         break;
@@ -65,16 +100,47 @@ switch (true) {
         (new ServicioController())->destroy($m[1]);
         break;
 
-    // --- DISPONIBILIDADES ---
+    // Servicios asignados a un empleado
+    case ($uri === '/servicios/empleado' && $method === 'GET'):
+        (new ServicioController())->getByEmpleadoJSON();
+        break;
+
+
+    // ======================================================
+    // SERVICIOS - EMPLEADO
+    // ======================================================
+    case ($uri === '/servicio-empleado' && $method === 'GET'):
+        (new ServiciosEmpleadoController())->index();
+        break;
+
+    case ($uri === '/servicio-empleado/add' && $method === 'POST'):
+        (new ServiciosEmpleadoController())->add();
+        break;
+
+    case (preg_match('/^\/servicio-empleado\/remove\/(\d+)$/', $uri, $m) && $method === 'POST'):
+        (new ServiciosEmpleadoController())->remove($m[1]);
+        break;
+
+
+    // ======================================================
+    // DISPONIBILIDADES
+    // ======================================================
     case ($uri === '/disponibilidades' && $method === 'GET'):
-        (new DisponibilidadController())->index();
+        (new DisponibilidadController())->indexJSON();
         break;
 
     case ($uri === '/disponibilidades/create' && $method === 'POST'):
         (new DisponibilidadController())->store();
         break;
 
-    // --- RESERVAS ---
+    case (preg_match('/^\/disponibilidades\/delete\/(\d+)$/', $uri, $m) && $method === 'POST'):
+        (new DisponibilidadController())->destroy($m[1]);
+        break;
+
+
+    // ======================================================
+    // RESERVAS
+    // ======================================================
     case ($uri === '/reservas' && $method === 'GET'):
         (new ReservaController())->index();
         break;
@@ -82,8 +148,11 @@ switch (true) {
     case ($uri === '/reservas/create' && $method === 'POST'):
         (new ReservaController())->store();
         break;
-    
-            // --- EMPRESA ---
+
+
+    // ======================================================
+    // EMPRESA
+    // ======================================================
     case ($uri === '/empresa' && $method === 'GET'):
         (new \Dell5480\BackEnd\Controllers\EmpresaController())->show();
         break;
@@ -92,17 +161,11 @@ switch (true) {
         (new \Dell5480\BackEnd\Controllers\EmpresaController())->update();
         break;
 
-    case ($uri === '/usuarios/createUser' && $method === 'POST'):
-        (new UsuarioController())->createUser();
-        break;
-    case (preg_match('/^\/usuarios\/update\/(\d+)$/', $uri, $m) && $method === 'POST'):
-    (new UsuarioController())->update($m[1]);
-    break;
 
-
-
-    // --- DEFAULT ---
+    // ======================================================
+    // DEFAULT
+    // ======================================================
     default:
         http_response_code(404);
-        echo "404 - Página no encontrada";
+        echo "404 - Página no encontrada → URI: $uri";
 }

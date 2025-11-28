@@ -107,4 +107,5 @@ public function store() {
             echo json_encode(['success' => false, 'message' => 'Error al eliminar']);
         }
     }
+    
 }

@@ -101,7 +101,7 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
         <i data-feather="scissors" class="w-10 h-10 mb-4 text-orange-400"></i>
         <h3 class="text-xl font-bold mb-4 text-orange-400">Servicios</h3>
         <p class="mb-4 text-center text-white/90">Gestiona los servicios disponibles que los empleados pueden ofrecer.</p>
-        <a href="servicios.html" class="px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition">Ir a Servicios</a>
+        <a href="serviciosAdmin.php" class="px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition">Ir a Servicios</a>
     </div>
 
     <!-- Empresa -->
@@ -109,7 +109,7 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
         <i data-feather="home" class="w-10 h-10 mb-4 text-orange-400"></i>
         <h3 class="text-xl font-bold mb-4 text-orange-400">Empresa</h3>
         <p class="mb-4 text-center text-white/90">Modifica la información de la empresa, como nombre, logo o QR.</p>
-        <a href="empresa.html" class="px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition">Ir a Empresa</a>
+        <a href="empresa.php" class="px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition">Ir a Empresa</a>
     </div>
 
     <!-- Usuarios -->
@@ -117,7 +117,7 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
         <i data-feather="users" class="w-10 h-10 mb-4 text-orange-400"></i>
         <h3 class="text-xl font-bold mb-4 text-orange-400">Usuarios</h3>
         <p class="mb-4 text-center text-white/90">Crea nuevos clientes o empleados mediante un formulario sencillo.</p>
-        <a href="usuarios.html" class="px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition">Ir a Usuarios</a>
+        <a href="usuarios.php" class="px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition">Ir a Usuarios</a>
     </div>
 
   </div>

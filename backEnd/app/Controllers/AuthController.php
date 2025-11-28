@@ -31,10 +31,10 @@ class AuthController {
 
                     // Redirección según rol
                     $redirect = match($user['Roles_idRoles']) {
-                        1 => "/DisenioWeb2/frontEnd/pages/admin/indexAdmin.html",
-                        2 => "/DisenioWeb2/frontEnd/pages/empleado/indexEmpleado.html",
-                        3 => "/DisenioWeb2/frontEnd/pages/cliente/indexCliente.html",
-                        default => "/DisenioWeb2/frontEnd/pages/login.html"
+                        1 => "/DisenioWeb2/frontEnd/pages/admin/indexAdmin.php",
+                        2 => "/DisenioWeb2/frontEnd/pages/empleado/indexEmpleado.php",
+                        3 => "/DisenioWeb2/frontEnd/pages/cliente/indexCliente.php",
+                        default => "/DisenioWeb2/frontEnd/pages/login.php"
                     };
 
                     header("Location: $redirect");
@@ -53,5 +53,7 @@ class AuthController {
         header("Location: /DisenioWeb2/backEnd/public/login");
         exit;
     }
+
+    
     
 }

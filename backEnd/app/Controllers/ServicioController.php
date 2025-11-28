@@ -47,4 +47,24 @@ class ServicioController {
 
         echo json_encode(['success' => $result, 'message' => $result ? 'Servicio eliminado' : 'Error al eliminar']);
     }
+
+    // -----------------------------
+// Obtener servicios de un empleado (JSON)
+// -----------------------------
+public function getByEmpleadoJSON() {
+    session_start();
+    $empleadoId = $_SESSION['user']['idUsuarios'] ?? null;
+
+    if (!$empleadoId) {
+        http_response_code(403);
+        echo json_encode([]);
+        return;
+    }
+
+    $model = new Servicio();
+    $servicios = $model->getByEmpleado($empleadoId);
+    header('Content-Type: application/json');
+    echo json_encode($servicios);
+}
+
 }
