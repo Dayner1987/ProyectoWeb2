@@ -36,10 +36,10 @@
 
                 <!-- Menú escritorio -->
                 <nav class="hidden md:flex items-center space-x-10 text-lg">
-                    <a href="#inicio" class="text-orange-400 hover:text-orange-300 transition">Inicio</a>
-                    <a href="#nosotros" class="text-orange-400 hover:text-orange-300 transition">Sobre Nosotros</a>
+                    <a href="index.php" class="text-orange-400 hover:text-orange-300 transition">Inicio</a>
+                    <a href="#nosotros" class="text-orange-400 hover:text-orange-300 transition">Información</a>
                     <a href="#servicios" class="text-orange-400 hover:text-orange-300 transition">Servicios</a>
-                    <a href="#portafolio" class="text-orange-400 hover:text-orange-300 transition">Portafolio</a>
+                    <a href="#servicios" class="text-orange-400 hover:text-orange-300 transition">Galeria</a>
                     <a href="/DisenioWeb2/backEnd/public/login" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-semibold transition">Iniciar Sesión</a>
                 </nav>
 

@@ -5,12 +5,19 @@ use Dell5480\BackEnd\Models\Reserva;
 
 class ReservaController {
 
-    // Listar reservas
+    // ADMIN lista todas
     public function index() {
         $model = new Reserva();
         header('Content-Type: application/json');
         echo json_encode($model->getAll());
     }
+
+    public function cliente($idCliente) {
+    $model = new Reserva();
+    header("Content-Type: application/json");
+    echo json_encode($model->getByCliente($idCliente));
+}
+
 
     // Crear reserva
     public function store() {
@@ -20,17 +27,26 @@ class ReservaController {
         $disponibilidadId = $_POST['disponibilidad_id'] ?? null;
         $hora = $_POST['hora'] ?? null;
         $detalle = $_POST['detalle'] ?? null;
+        $servicios = $_POST['servicios'] ?? [];
 
-        if (!$clienteId || !$disponibilidadId || !$hora) {
+        if (!$clienteId || !$disponibilidadId || !$hora || empty($servicios)) {
             http_response_code(400);
             echo json_encode(['success' => false, 'message' => 'Faltan datos']);
             return;
         }
 
         $model = new Reserva();
-        $result = $model->create($clienteId, $disponibilidadId, $hora, $detalle);
+        $reservaId = $model->create($clienteId, $disponibilidadId, $hora, $detalle);
 
-        echo json_encode(['success' => $result, 'message' => $result ? 'Reserva creada' : 'Error al crear']);
+        if (!$reservaId) {
+            echo json_encode(["success" => false, "message" => "Error al crear reserva"]);
+            return;
+        }
+
+        // Guardar servicios de reserva
+        $model->addServicios($reservaId, $servicios);
+
+        echo json_encode(["success" => true, "message" => "Reserva creada con éxito"]);
     }
 
     public function updateEstado($id) {
@@ -44,13 +60,13 @@ class ReservaController {
         $model = new Reserva();
         $result = $model->updateEstado($id, $estado);
 
-        echo json_encode(['success' => $result, 'message' => $result ? 'Estado actualizado' : 'Error al actualizar']);
+        echo json_encode(['success' => $result]);
     }
 
     public function destroy($id) {
         $model = new Reserva();
         $result = $model->delete($id);
 
-        echo json_encode(['success' => $result, 'message' => $result ? 'Reserva eliminada' : 'Error al eliminar']);
+        echo json_encode(['success' => $result]);
     }
 }

@@ -38,4 +38,17 @@ class Servicios_Empleados {
         $stmt->bindParam(':emp', $empleadoId);
         return $stmt->execute();
     }
+   
+public function getEmpleadosPorServicio($servicioId) {
+    $sql = "SELECT u.idUsuarios, u.nombreUsuario
+            FROM Usuarios u
+            JOIN Servicios_Empleados se ON se.empleado_id = u.idUsuarios
+            WHERE se.servicio_id = :servicio";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(':servicio', $servicioId, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 }

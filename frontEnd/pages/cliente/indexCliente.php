@@ -3,127 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peluqueria-barberia</title>
+    <title>Mis Reservas</title>
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Lightbox CSS -->
-    <link rel="stylesheet" href="css/lightbox.min.css">
-
-    <!-- Librerías adicionales -->
-    <script src="https://unpkg.com/feather-icons"></script>
-
-    <!-- AOS Animations -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
-    <!-- CSS personalizado -->
-    <link rel="stylesheet" href="css/index.css">
 </head>
-<body class="bg-gray-50 font-sans">
 
-    <!-- Fondo personalizable -->
-    <div class="fixed inset-0 -z-10 bg-cover bg-center opacity-95" id="fondoPersonalizado"></div>
+<body class="bg-gray-100">
 
-    <!-- Navbar moderno -->
-    <header id="navbar" class="bg-transparent fixed w-full z-50 transition-colors duration-500 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-               
-                <div class="flex items-center gap-4">
-                    <span id="empresaNombre" class="text-3xl font-bold text-orange-400 drop-shadow-md">Peluquería Reflejos</span>
-                </div>
-
-                <!-- Menú escritorio -->
-                <nav class="hidden md:flex items-center space-x-10 text-lg">
-                    <a href="#inicio" class="text-orange-400 hover:text-orange-300 transition">Inicio</a>
-                    <a href="#nosotros" class="text-orange-400 hover:text-orange-300 transition">Sobre Nosotros</a>
-                    <a href="#servicios" class="text-orange-400 hover:text-orange-300 transition">Servicios</a>
-                    <a href="#portafolio" class="text-orange-400 hover:text-orange-300 transition">Portafolio</a>
-                    <button id="logoutBtn" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-semibold transition">
-  Cerrar Sesión
-</button>
-<script>
-document.getElementById('logoutBtn').addEventListener('click', async () => {
-    try {
-        await fetch('/DisenioWeb2/backEnd/public/logout', { method: 'POST' });
-        window.location.href = '/DisenioWeb2/backEnd/public/login';
-    } catch(err) {
-        console.error('Error cerrando sesión:', err);
-    }
-});
-</script>
-                </nav>
-
-                <!-- Menú Hamburguesa -->
-                <div class="md:hidden flex items-center">
-                    <button id="menu-btn" class="text-white focus:outline-none">
-                        <i data-feather="menu" class="w-8 h-8"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Menú móvil -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2 text-orange-400 text-lg">
-            <a href="#inicio" class="block hover:text-orange-300">Inicio</a>
-            <a href="#nosotros" class="block hover:text-orange-300">Sobre Nosotros</a>
-            <a href="#servicios" class="block hover:text-orange-300">Servicios</a>
-            <a href="#portafolio" class="block hover:text-orange-300">Portafolio</a>
-            <a href="/DisenioWeb2/backEnd/public/login" class="block hover:text-orange-300 font-semibold">Iniciar Sesión</a>
+    <header class="bg-orange-500 text-white py-5 shadow-md">
+        <div class="max-w-5xl mx-auto flex justify-between items-center px-4">
+            <h1 class="text-3xl font-bold">Mis Reservas</h1>
+            <a href="indexCliente.php" class="text-white underline">Volver</a>
         </div>
     </header>
-
-    <main class="pt-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-  <!-- Bienvenida -->
-  <div class="rounded-2xl shadow-xl p-6 flex flex-col md:flex-row gap-6 items-center 
-              bg-gradient-to-r from-orange-400 via-orange-300 to-yellow-200 mb-12"
-       data-aos="fade-up">
-    <img id="empresaLogo" src="img/default-logo.png" alt="Logo Empresa" class="w-64 rounded-xl shadow-md" data-aos="fade-right">
-    <div data-aos="fade-left">
-        <h2 class="text-4xl font-bold text-white mb-4">
-            Bienvenidos a <span id="empresaNombreHeader">Reflejos</span>
-        </h2>
-        <p class="text-white/90 mb-6">
-            Transformamos tu estilo con cortes modernos y atención profesional.
-        </p>
+  <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-semibold text-gray-700">Reservas pendientes</h2>
+        <a href="reservasC.php" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded font-semibold">
+            Crear nueva reserva
+        </a>
     </div>
-  </div>
+    <main class="max-w-5xl mx-auto mt-10 bg-white shadow-lg rounded-lg p-6">
 
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Reservas pendientes</h2>
 
+        <table class="w-full text-left border border-gray-300 rounded-lg overflow-hidden">
+            <thead class="bg-orange-500 text-white">
+                <tr>
+                    <th class="py-3 px-4">Fecha</th>
+                    <th class="py-3 px-4">Hora</th>
+                    <th class="py-3 px-4">Empleado</th>
+                    <th class="py-3 px-4">Servicios</th>
+                    <th class="py-3 px-4">Estado</th>
+                </tr>
+            </thead>
+            <tbody id="tablaReservas" class="divide-y divide-gray-200 bg-white">
+                <tr>
+                    <td colspan="5" class="py-4 text-center text-gray-400">
+                        Cargando reservas...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-</main>
+    </main>
 
-    <!-- Footer dinámico con fondo negro y acento naranja -->
-    <footer class="mt-20 bg-black text-white py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-6">
-            <div class="flex flex-col items-start gap-2">
-                <img id="empresaLogo2" src="img/default-logo.png" alt="Logo Empresa" class="w-64 rounded-xl shadow-md" data-aos="fade-right">
-                <h2 id="empresaNombreFooter" class="text-xl font-bold text-orange-500">Peluquería Reflejos</h2>
-            </div>
-            <div class="flex flex-col gap-2">
-                <h3 class="font-semibold text-orange-400 text-lg">Contacto</h3>
-                <a id="footerWhatsApp" href="#" class="hover:text-orange-300 transition">WhatsApp: +591 77975489</a>
-                <a id="footerCorreo" href="#" class="hover:text-orange-300 transition">Correo: info@peluqueria.com</a>
-                <p id="footerDireccion" class="hover:text-orange-300 transition">Dirección: Calle Falsa 123, La Paz</p>
-            </div>
-            <div class="flex flex-col gap-2">
-                <h3 class="font-semibold text-orange-400 text-lg">Síguenos</h3>
-                <div class="flex gap-4">
-                    <a href="#" class="hover:text-orange-300"><i data-feather="instagram"></i></a>
-                    <a href="#" class="hover:text-orange-300"><i data-feather="facebook"></i></a>
-                    <a href="#" class="hover:text-orange-300"><i data-feather="twitter"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
+   <!-- Script -->
+<script>
+document.addEventListener("DOMContentLoaded", cargarReservas);
 
-    <!-- Scripts -->
-    <script src="js/lightbox-plus-jquery.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({duration:800, once:false});</script>
-    <script src="../../js/client.js"></script>
+async function cargarReservas() {
+    try {
+        // Obtener datos de la sesión del cliente
+        const respSession = await fetch("/DisenioWeb2/backEnd/public/session");
+        const sessionData = await respSession.json();
+
+        const tbody = document.getElementById("tablaReservas");
+
+        if (!sessionData.success || !sessionData.user) {
+            tbody.innerHTML = `
+                <tr><td colspan="5" class="py-4 text-center text-red-500">
+                    No has iniciado sesión.
+                </td></tr>`;
+            return;
+        }
+
+        // ID del cliente desde sesión
+        const clienteId = sessionData.user.idUsuarios;
+
+        // ⚡ Endpoint corregido: sin pasar ID en la URL
+        const resp = await fetch(`/DisenioWeb2/backEnd/public/reservas/cliente`);
+        const reservas = await resp.json();
+
+        if (!Array.isArray(reservas) || reservas.length === 0) {
+            tbody.innerHTML = `
+                <tr><td colspan="5" class="py-4 text-center text-gray-500">
+                    No hiciste ninguna reserva todavía.
+                </td></tr>`;
+            return;
+        }
+
+        // Renderizar tabla de reservas
+        tbody.innerHTML = reservas.map(r => `
+            <tr>
+                <td class="py-3 px-4">${r.fecha ?? '--'}</td>
+                <td class="py-3 px-4">${r.hora ?? '--'}</td>
+                <td class="py-3 px-4">${r.empleado ?? '—'}</td>
+                <td class="py-3 px-4 text-sm text-gray-700">
+                    ${Array.isArray(r.servicios) ? r.servicios.join(', ') : '—'}
+                </td>
+                <td class="py-3 px-4">
+                    <span class="px-3 py-1 rounded-full text-white text-sm 
+                    ${r.estado === 'pendiente' ? 'bg-yellow-500' :
+                      r.estado === 'confirmada' ? 'bg-green-600' : 'bg-red-500'}">
+                        ${r.estado}
+                    </span>
+                </td>
+            </tr>
+        `).join("");
+
+    } catch (err) {
+        console.error(err);
+        document.getElementById("tablaReservas").innerHTML = `
+            <tr><td colspan="5" class="py-4 text-center text-red-500">
+                Error cargando reservas.
+            </td></tr>`;
+    }
+}
+</script>
+
 
 </body>
 </html>

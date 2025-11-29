@@ -63,7 +63,7 @@ function cargarDisponibilidades() {
                     <td class="p-2">${d.horaInicio}</td>
                     <td class="p-2">${d.horaFin}</td>
                     <td class="p-2 text-center">
-                        <button onclick="eliminarDisp(${d.id})"
+                        <button onclick="eliminarDisp(${d.idDisponibilidad})"
                             class="px-3 py-1 bg-red-600 hover:bg-red-700 rounded text-white">
                             Eliminar
                         </button>
@@ -74,6 +74,7 @@ function cargarDisponibilidades() {
             });
         });
 }
+
 
 cargarDisponibilidades();
 

@@ -120,13 +120,18 @@ switch (true) {
     case (preg_match('/^\/servicio-empleado\/remove\/(\d+)$/', $uri, $m) && $method === 'POST'):
         (new ServiciosEmpleadoController())->remove($m[1]);
         break;
+// GET empleados por servicio
+case (preg_match('/^\/servicio-empleado\/servicio\/(\d+)$/', $uri, $matches) && $method === 'GET'):
+    (new ServiciosEmpleadoController())->getByServicio($matches[1]);
+    break;
+
 
 
     // ======================================================
     // DISPONIBILIDADES
     // ======================================================
     case ($uri === '/disponibilidades' && $method === 'GET'):
-        (new DisponibilidadController())->indexJSON();
+        (new DisponibilidadController())->index();
         break;
 
     case ($uri === '/disponibilidades/create' && $method === 'POST'):
@@ -140,14 +145,22 @@ switch (true) {
 
     // ======================================================
     // RESERVAS
-    // ======================================================
-    case ($uri === '/reservas' && $method === 'GET'):
-        (new ReservaController())->index();
-        break;
+// GET reservas de un cliente: /reservas/cliente/{id}
+case (preg_match('/^\/reservas\/cliente\/(\d+)$/', $uri, $matches) && $method === 'GET'):
+    (new ReservaController())->cliente($matches[1]);
+    break;
 
-    case ($uri === '/reservas/create' && $method === 'POST'):
-        (new ReservaController())->store();
-        break;
+// POST crear reserva
+case ($uri === '/reservas/create' && $method === 'POST'):
+    (new ReservaController())->store();
+    break;
+
+
+// Crear reserva (POST /reservas/create)
+case ($uri === '/reservas/create' && $method === 'POST'):
+    (new ReservaController())->store();
+    break;
+
 
 
     // ======================================================
