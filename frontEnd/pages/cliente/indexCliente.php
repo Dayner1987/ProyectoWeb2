@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Si no está logueado, redirigir
+if (!isset($_SESSION['user'])) {
+    header("Location: ../login.php");
+    exit;
+}
+
+$clienteId = $_SESSION['user']['idUsuarios'];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,68 +22,62 @@
 
 <body class="bg-gray-100">
 
-    <header class="bg-orange-500 text-white py-5 shadow-md">
-        <div class="max-w-5xl mx-auto flex justify-between items-center px-4">
-            <h1 class="text-3xl font-bold">Mis Reservas</h1>
-            <a href="indexCliente.php" class="text-white underline">Volver</a>
-        </div>
-    </header>
-  <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-semibold text-gray-700">Reservas pendientes</h2>
-        <a href="reservasC.php" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded font-semibold">
-            Crear nueva reserva
-        </a>
+<header class="bg-orange-500 text-white py-5 shadow-md">
+    <div class="max-w-5xl mx-auto flex justify-between items-center px-4">
+        <h1 class="text-3xl font-bold">Mis Reservas</h1>
+        <a href="indexCliente.php" class="text-white underline">Volver</a>
     </div>
-    <main class="max-w-5xl mx-auto mt-10 bg-white shadow-lg rounded-lg p-6">
+</header>
 
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Reservas pendientes</h2>
+<div class="flex justify-between items-center max-w-5xl mx-auto mt-6 px-4">
+    <h2 class="text-2xl font-semibold text-gray-700">Reservas pendientes</h2>
+    <a href="reservasC.php" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded font-semibold">
+        Crear nueva reserva
+    </a>
+</div>
 
-        <table class="w-full text-left border border-gray-300 rounded-lg overflow-hidden">
-            <thead class="bg-orange-500 text-white">
-                <tr>
-                    <th class="py-3 px-4">Fecha</th>
-                    <th class="py-3 px-4">Hora</th>
-                    <th class="py-3 px-4">Empleado</th>
-                    <th class="py-3 px-4">Servicios</th>
-                    <th class="py-3 px-4">Estado</th>
-                </tr>
-            </thead>
-            <tbody id="tablaReservas" class="divide-y divide-gray-200 bg-white">
-                <tr>
-                    <td colspan="5" class="py-4 text-center text-gray-400">
-                        Cargando reservas...
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+<main class="max-w-5xl mx-auto mt-6 bg-white shadow-lg rounded-lg p-6">
 
-    </main>
+    <table class="w-full text-left border border-gray-300 rounded-lg overflow-hidden">
+        <thead class="bg-orange-500 text-white">
+            <tr>
+                <th class="py-3 px-4">Fecha</th>
+                <th class="py-3 px-4">Hora</th>
+                <th class="py-3 px-4">Empleado</th>
+                <th class="py-3 px-4">Servicios</th>
+                <th class="py-3 px-4">Estado</th>
+            </tr>
+        </thead>
+        <tbody id="tablaReservas" class="divide-y divide-gray-200 bg-white">
+            <tr>
+                <td colspan="5" class="py-4 text-center text-gray-400">
+                    Cargando reservas...
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-   <!-- Script -->
+</main>
+
 <script>
 document.addEventListener("DOMContentLoaded", cargarReservas);
 
 async function cargarReservas() {
+
+    const clienteId = <?= json_encode($clienteId); ?>;
+    const tbody = document.getElementById("tablaReservas");
+
     try {
-        // Obtener datos de la sesión del cliente
-        const respSession = await fetch("/DisenioWeb2/backEnd/public/session");
-        const sessionData = await respSession.json();
+        const resp = await fetch(`/DisenioWeb2/backEnd/public/reservas/cliente/${clienteId}`);
 
-        const tbody = document.getElementById("tablaReservas");
-
-        if (!sessionData.success || !sessionData.user) {
+        if (!resp.ok) {
             tbody.innerHTML = `
                 <tr><td colspan="5" class="py-4 text-center text-red-500">
-                    No has iniciado sesión.
+                    Error cargando reservas (HTTP ${resp.status})
                 </td></tr>`;
             return;
         }
 
-        // ID del cliente desde sesión
-        const clienteId = sessionData.user.idUsuarios;
-
-        // ⚡ Endpoint corregido: sin pasar ID en la URL
-        const resp = await fetch(`/DisenioWeb2/backEnd/public/reservas/cliente`);
         const reservas = await resp.json();
 
         if (!Array.isArray(reservas) || reservas.length === 0) {
@@ -82,35 +88,33 @@ async function cargarReservas() {
             return;
         }
 
-        // Renderizar tabla de reservas
         tbody.innerHTML = reservas.map(r => `
             <tr>
-                <td class="py-3 px-4">${r.fecha ?? '--'}</td>
-                <td class="py-3 px-4">${r.hora ?? '--'}</td>
-                <td class="py-3 px-4">${r.empleado ?? '—'}</td>
+                <td class="py-3 px-4">${r.fecha || '--'}</td>
+                <td class="py-3 px-4">${r.hora || '--'}</td>
+                <td class="py-3 px-4">${r.empleado || '—'}</td>
                 <td class="py-3 px-4 text-sm text-gray-700">
                     ${Array.isArray(r.servicios) ? r.servicios.join(', ') : '—'}
                 </td>
                 <td class="py-3 px-4">
                     <span class="px-3 py-1 rounded-full text-white text-sm 
-                    ${r.estado === 'pendiente' ? 'bg-yellow-500' :
-                      r.estado === 'confirmada' ? 'bg-green-600' : 'bg-red-500'}">
+                        ${r.estado === 'pendiente' ? 'bg-yellow-500' :
+                          r.estado === 'confirmada' ? 'bg-green-600' : 'bg-red-500'}">
                         ${r.estado}
                     </span>
                 </td>
             </tr>
         `).join("");
 
-    } catch (err) {
+    } catch(err) {
         console.error(err);
-        document.getElementById("tablaReservas").innerHTML = `
+        tbody.innerHTML = `
             <tr><td colspan="5" class="py-4 text-center text-red-500">
                 Error cargando reservas.
             </td></tr>`;
     }
 }
 </script>
-
 
 </body>
 </html>

@@ -128,19 +128,25 @@ case (preg_match('/^\/servicio-empleado\/servicio\/(\d+)$/', $uri, $matches) && 
 
 
     // ======================================================
-    // DISPONIBILIDADES
-    // ======================================================
-    case ($uri === '/disponibilidades' && $method === 'GET'):
-        (new DisponibilidadController())->index();
-        break;
+// DISPONIBILIDADES
+// ======================================================
+case ($uri === '/disponibilidades' && $method === 'GET'):
+    (new DisponibilidadController())->index();
+    break;
 
-    case ($uri === '/disponibilidades/create' && $method === 'POST'):
-        (new DisponibilidadController())->store();
-        break;
+case ($uri === '/disponibilidades/create' && $method === 'POST'):
+    (new DisponibilidadController())->store();
+    break;
 
-    case (preg_match('/^\/disponibilidades\/delete\/(\d+)$/', $uri, $m) && $method === 'POST'):
-        (new DisponibilidadController())->destroy($m[1]);
-        break;
+case (preg_match('/^\/disponibilidades\/delete\/(\d+)$/', $uri, $m) && $method === 'POST'):
+    (new DisponibilidadController())->destroy($m[1]);
+    break;
+
+// NUEVA RUTA → horas individuales según fecha
+case ($uri === '/disponibilidades/horas' && $method === 'GET'):
+    (new DisponibilidadController())->horas();
+    break;
+
 
 
     // ======================================================
@@ -149,14 +155,6 @@ case (preg_match('/^\/servicio-empleado\/servicio\/(\d+)$/', $uri, $matches) && 
 case (preg_match('/^\/reservas\/cliente\/(\d+)$/', $uri, $matches) && $method === 'GET'):
     (new ReservaController())->cliente($matches[1]);
     break;
-
-// POST crear reserva
-case ($uri === '/reservas/create' && $method === 'POST'):
-    (new ReservaController())->store();
-    break;
-
-
-// Crear reserva (POST /reservas/create)
 case ($uri === '/reservas/create' && $method === 'POST'):
     (new ReservaController())->store();
     break;

@@ -1,5 +1,4 @@
 <?php
-// reservasC.php
 session_start();
 ?>
 <!DOCTYPE html>
@@ -14,15 +13,14 @@ session_start();
     <!-- Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
 </head>
 <body class="bg-gray-100">
 
-<main class="max-w-5xl mx-auto mt-10 bg-white shadow-lg rounded-lg p-6">
+<main class="max-w-4xl mx-auto mt-10 bg-white shadow-xl rounded-lg p-6">
 
-    <h2 class="text-2xl font-semibold mb-4 text-gray-700">Nueva reserva</h2>
+    <h2 class="text-3xl font-semibold mb-6 text-gray-700">Nueva Reserva</h2>
 
-    <form id="reservaForm" class="space-y-4">
+    <form id="reservaForm" class="space-y-5">
 
         <!-- Servicio -->
         <div>
@@ -49,11 +47,12 @@ session_start();
                 type="text"
                 class="w-full border rounded px-3 py-2 bg-white"
                 placeholder="Selecciona una fecha"
+                readonly
                 required
             >
         </div>
 
-        <!-- Hora disponible -->
+        <!-- Hora -->
         <div>
             <label class="block font-semibold mb-1">Hora disponible:</label>
             <select id="horaSelect" name="disponibilidad_id" class="w-full border rounded px-3 py-2">
@@ -67,120 +66,43 @@ session_start();
             <textarea name="detalle" class="w-full border rounded px-3 py-2" rows="3"></textarea>
         </div>
 
-        <button type="submit" class="px-6 py-2 bg-orange-500 hover:bg-orange-600 rounded text-white font-semibold">
-            Reservar
+        <!-- Método de pago (SE OCULTA HASTA QUE SELECCIONE HORA) -->
+        <div id="metodoPagoSection" class="hidden border-t pt-4">
+            <h3 class="text-xl font-semibold mb-2">Método de pago</h3>
+
+            <select id="pagoSelect" class="w-full border rounded px-3 py-2">
+                <option value="">-- Selecciona método de pago --</option>
+                <option value="qr">Pago con QR</option>
+                <option value="efectivo">Pago en efectivo</option>
+            </select>
+
+            <!-- QR dinámico -->
+            <div id="qrBox" class="hidden mt-4 p-4 bg-gray-100 rounded">
+                <p class="font-semibold mb-2">Escanea el código QR:</p>
+                <img id="empresaQR" 
+                    src=""
+                    alt="QR de pago" 
+                    class="mx-auto w-48 h-48 object-cover">
+            </div>
+
+
+            <!-- WhatsApp -->
+            <a id="whatsappBtn" target="_blank"
+               class="hidden mt-5 block bg-green-500 hover:bg-green-600 text-white text-center py-2 rounded font-semibold">
+               Enviar comprobante por WhatsApp
+            </a>
+        </div>
+
+        <!-- Botón final -->
+        <button type="submit" 
+            class="w-full px-6 py-3 mt-6 bg-orange-500 hover:bg-orange-600 rounded text-white font-semibold text-lg">
+            Generar Reserva
         </button>
 
     </form>
 
 </main>
-
-<script>
-document.addEventListener('DOMContentLoaded', async () => {
-
-    const servicioSelect = document.getElementById('servicioSelect');
-    const empleadoSelect = document.getElementById('empleadoSelect');
-    const fechaSelect = document.getElementById('fechaSelect');
-    const horaSelect = document.getElementById('horaSelect');
-    const form = document.getElementById('reservaForm');
-
-    // Inicializar calendario
-    flatpickr("#fechaSelect", {
-        dateFormat: "Y-m-d",
-        minDate: "today"
-    });
-
-    // 1️⃣ Cargar servicios
-    const respServicios = await fetch('/DisenioWeb2/backEnd/public/servicios');
-    const servicios = await respServicios.json();
-
-    servicios.forEach(s => {
-        const opt = document.createElement('option');
-        opt.value = s.idServicios;
-        opt.textContent = s.nombreServicio;
-        servicioSelect.appendChild(opt);
-    });
-
-
-    // 2️⃣ Al cambiar servicio → cargar empleados
-    servicioSelect.addEventListener('change', async () => {
-
-        const servicioId = servicioSelect.value;
-        empleadoSelect.innerHTML = '<option value="">-- Elige un empleado --</option>';
-        horaSelect.innerHTML = '<option value="">-- Selecciona fecha primero --</option>';
-        fechaSelect.value = "";
-
-        if (!servicioId) return;
-
-        const respEmp = await fetch(`/DisenioWeb2/backEnd/public/servicio-empleado/servicio/${servicioId}`);
-        const empleados = await respEmp.json();
-
-        empleados.forEach(e => {
-            const opt = document.createElement('option');
-            opt.value = e.idUsuarios;
-            opt.textContent = e.nombreUsuario;
-            empleadoSelect.appendChild(opt);
-        });
-    });
-
-
-    // 3️⃣ Al cambiar empleado → limpiar fecha y hora
-    empleadoSelect.addEventListener('change', () => {
-        fechaSelect.value = "";
-        horaSelect.innerHTML = '<option value="">-- Selecciona fecha primero --</option>';
-    });
-
-
-    // 4️⃣ Al cambiar fecha → cargar horas disponibles según FECHA + EMPLEADO
-    fechaSelect.addEventListener('change', async () => {
-
-        const empleadoId = empleadoSelect.value;
-        const fecha = fechaSelect.value;
-
-        horaSelect.innerHTML = '<option value="">Cargando...</option>';
-
-        if (!empleadoId || !fecha) {
-            horaSelect.innerHTML = '<option value="">-- Selecciona fecha primero --</option>';
-            return;
-        }
-
-        const respDisp = await fetch(`/DisenioWeb2/backEnd/public/disponibilidades?empleado_id=${empleadoId}&fecha=${fecha}`);
-        const disp = await respDisp.json();
-
-        horaSelect.innerHTML = '<option value="">-- Elige hora --</option>';
-
-        disp.forEach(d => {
-            const opt = document.createElement('option');
-            opt.value = d.idDisponibilidad;
-            opt.textContent = `${d.horaInicio} - ${d.horaFin}`;
-            horaSelect.appendChild(opt);
-        });
-    });
-
-
-    // 5️⃣ Enviar formulario
-    form.addEventListener('submit', async e => {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-
-        const resp = await fetch('/DisenioWeb2/backEnd/public/reservas/create', {
-            method: 'POST',
-            body: formData
-        });
-
-        const result = await resp.json();
-
-        if (result.success) {
-            alert('Reserva creada con éxito');
-            window.location.reload();
-        } else {
-            alert(result.message || 'Error al crear reserva');
-        }
-    });
-
-});
-</script>
+<script src="../../js/cliente.js"></script>
 
 </body>
 </html>

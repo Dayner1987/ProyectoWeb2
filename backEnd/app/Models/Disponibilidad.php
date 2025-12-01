@@ -106,4 +106,78 @@ class Disponibilidad
             return false;
         }
     }
+
+    /**
+ * Obtener disponibilidades de un empleado en una fecha específica
+ */
+public function getByFecha($empleadoId, $fecha)
+{
+    try {
+        $sql = "SELECT 
+                    idDisponibilidad,
+                    empleado_id,
+                    fecha,
+                    horaInicio,
+                    horaFin
+                FROM Disponibilidades
+                WHERE empleado_id = :emp AND fecha = :fecha
+                ORDER BY horaInicio ASC";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':emp', $empleadoId, PDO::PARAM_INT);
+        $stmt->bindParam(':fecha', $fecha);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $e) {
+        return [];
+    }
+}
+/**
+ * Obtener una disponibilidad por ID
+ */
+public function getById($id)
+{
+    try {
+        $sql = "SELECT 
+                    idDisponibilidad,
+                    empleado_id,
+                    fecha,
+                    horaInicio,
+                    horaFin
+                FROM Disponibilidades
+                WHERE idDisponibilidad = :id
+                LIMIT 1";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC); // devuelve un array asociativo o false si no existe
+
+    } catch (\PDOException $e) {
+        return false;
+    }
+}
+public function getHorasDisponibles($empleadoId, $fecha)
+{
+    $sql = "SELECT 
+                idDisponibilidad,
+                horaInicio
+            FROM Disponibilidades
+            WHERE empleado_id = :empleado
+            AND fecha = :fecha
+            ORDER BY horaInicio ASC";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(':empleado', $empleadoId, PDO::PARAM_INT);
+    $stmt->bindParam(':fecha', $fecha);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+
 }

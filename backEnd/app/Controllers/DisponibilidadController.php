@@ -138,4 +138,55 @@ class DisponibilidadController
         header('Content-Type: application/json');
         echo json_encode($events);
     }
+    /**
+ * Obtener horas disponibles individuales (09:00, 10:00, 11:00...)
+ */
+public function horas()
+{
+    session_start();
+
+    $empleadoId = $_SESSION['user']['idUsuarios'] ?? null;
+    if (!$empleadoId) {
+        echo json_encode(['success' => false, 'message' => 'No autorizado']);
+        return;
+    }
+
+    $fecha = $_GET['fecha'] ?? null;
+    if (!$fecha) {
+        echo json_encode(['success' => false, 'message' => 'Falta la fecha']);
+        return;
+    }
+
+    $model = new Disponibilidad();
+    $rangos = $model->getByFecha($empleadoId, $fecha);
+
+    $horas = [];
+
+    foreach ($rangos as $r) {
+
+        $start = strtotime($r['horaInicio']);
+        $end   = strtotime($r['horaFin']);
+
+        while ($start <= $end) {
+
+            // Mantener hora actual para mostrarla
+            $horaActual = date('H:i', $start);
+
+            // Guardar el ID real de disponibilidad
+            $horas[] = [
+                'idDisponibilidad' => $r['idDisponibilidad'],
+                'horaInicio' => $horaActual
+            ];
+
+            $start = strtotime('+1 hour', $start);
+        }
+    }
+
+    echo json_encode([
+        'success' => true,
+        'horas' => $horas
+    ]);
+}
+
+
 }
