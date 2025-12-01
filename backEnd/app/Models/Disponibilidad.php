@@ -177,6 +177,16 @@ public function getHorasDisponibles($empleadoId, $fecha)
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+public function checkHoraReservada($disponibilidadId, $hora) {
+    $sql = "SELECT COUNT(*) FROM Reservas 
+            WHERE disponibilidad_id = :disp AND hora = :hora";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(':disp', $disponibilidadId, PDO::PARAM_INT);
+    $stmt->bindParam(':hora', $hora);
+    $stmt->execute();
+    return $stmt->fetchColumn() > 0; // true si ya existe reserva
+}
+
 
 
 

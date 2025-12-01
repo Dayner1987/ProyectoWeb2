@@ -15,7 +15,12 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body class="bg-gray-100">
-
+<header class="bg-orange-500 text-white py-5 shadow-md">
+    <div class="max-w-5xl mx-auto flex justify-between items-center px-4">
+        <h1 class="text-3xl font-bold">Mis Reservas</h1>
+        <a href="indexCliente.php" class="text-white underline">Volver</a>
+    </div>
+</header>
 <main class="max-w-4xl mx-auto mt-10 bg-white shadow-xl rounded-lg p-6">
 
     <h2 class="text-3xl font-semibold mb-6 text-gray-700">Nueva Reserva</h2>
@@ -95,7 +100,7 @@ session_start();
 
         <!-- Botón final -->
         <button type="submit" 
-            class="w-full px-6 py-3 mt-6 bg-orange-500 hover:bg-orange-600 rounded text-white font-semibold text-lg">
+            class="w-full px-6 py-3 mt-6 bg-orange-500 hover:bg-orange-600 rounded text-white font-semibold text-lg" >
             Generar Reserva
         </button>
 

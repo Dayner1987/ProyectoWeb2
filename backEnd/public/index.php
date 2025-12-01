@@ -171,6 +171,10 @@ case ($uri === '/reservas/create' && $method === 'POST'):
     case ($uri === '/empresa/update' && $method === 'POST'):
         (new \Dell5480\BackEnd\Controllers\EmpresaController())->update();
         break;
+// DELETE /reservas/{id}
+case (preg_match('/^\/reservas\/(\d+)$/', $uri, $matches) && $method === 'DELETE'):
+    (new ReservaController())->destroy($matches[1]);
+    break;
 
 
     // ======================================================

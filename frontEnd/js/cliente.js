@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const whatsappBtn = document.getElementById('whatsappBtn');
     const form = document.getElementById('reservaForm');
 
-    // cargar empresa QR (igual que antes)
+    // =========================
+    // Cargar QR de empresa
+    // =========================
     let empresaQR = null;
     async function cargarEmpresaCliente() {
         try {
@@ -24,17 +26,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     await cargarEmpresaCliente();
 
-    // flatpickr
+    // =========================
+    // Flatpickr para fecha
+    // =========================
     flatpickr("#fechaSelect", { dateFormat: "Y-m-d", minDate: "today", allowInput: false });
 
-    // cargar servicios
+    // =========================
+    // Cargar servicios
+    // =========================
     const respServicios = await fetch('/DisenioWeb2/backEnd/public/servicios');
     const servicios = await respServicios.json();
     servicios.forEach(s => {
         servicioSelect.innerHTML += `<option value="${s.idServicios}">${s.nombreServicio}</option>`;
     });
 
-    // al cambiar servicio → empleados
+    // =========================
+    // Cambiar servicio → cargar empleados
+    // =========================
     servicioSelect.addEventListener('change', async () => {
         const servicioId = servicioSelect.value;
         empleadoSelect.innerHTML = '<option value="">-- Elige un empleado --</option>';
@@ -42,6 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         fechaSelect.value = "";
         metodoPagoSection.classList.add('hidden');
         if (!servicioId) return;
+
         const respEmp = await fetch(`/DisenioWeb2/backEnd/public/servicio-empleado/servicio/${servicioId}`);
         const empleados = await respEmp.json();
         empleados.forEach(e => {
@@ -55,32 +64,29 @@ document.addEventListener('DOMContentLoaded', async () => {
         metodoPagoSection.classList.add('hidden');
     });
 
-    // cargar horas para el empleado+fecha
+    // =========================
+    // Cargar horas disponibles para empleado+fecha
+    // =========================
     fechaSelect.addEventListener('change', async () => {
         const empleadoId = empleadoSelect.value;
         const fecha = fechaSelect.value;
         if (!empleadoId || !fecha) return;
+
         horaSelect.innerHTML = '<option>Cargando...</option>';
+
         try {
             const resp = await fetch(`/DisenioWeb2/backEnd/public/disponibilidades/horas?empleado_id=${empleadoId}&fecha=${fecha}`);
             const data = await resp.json();
 
             horaSelect.innerHTML = '<option value="">-- Elige hora --</option>';
 
-            // Aquí esperamos que data.horas sea un array de objetos {idDisponibilidad, horaInicio}
             if (data.success && Array.isArray(data.horas)) {
                 data.horas.forEach(h => {
-                    // Si el backend devuelve objetos, usamos la id; si devuelve string, lo mostramos pero advertimos
                     if (h.idDisponibilidad && h.horaInicio) {
-                        horaSelect.innerHTML += `<option value="${h.idDisponibilidad}">${h.horaInicio}</option>`;
-                    } else {
-                        // fallback — mostrará la hora como value (esto provocará error en backend)
-                        horaSelect.innerHTML += `<option value="${h}">${h}</option>`;
+                        // Guardamos valor como "hora|idDisponibilidad"
+                        horaSelect.innerHTML += `<option value="${h.horaInicio}|${h.idDisponibilidad}">${h.horaInicio}</option>`;
                     }
                 });
-            } else if (Array.isArray(data)) {
-                // Si el endpoint devolvió directamente un array simple
-                data.forEach(h => horaSelect.innerHTML += `<option value="${h}">${h}</option>`);
             } else {
                 horaSelect.innerHTML = '<option value="">No hay horas disponibles</option>';
             }
@@ -90,6 +96,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
+    // =========================
+    // Mostrar método de pago
+    // =========================
     horaSelect.addEventListener('change', () => {
         metodoPagoSection.classList.toggle('hidden', !horaSelect.value);
     });
@@ -109,7 +118,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    // único submit handler (depurado)
+    // =========================
+    // Submit reserva
+    // =========================
     form.addEventListener('submit', async e => {
         e.preventDefault();
 
@@ -117,13 +128,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         const servicioId = servicioSelect.value;
         if (servicioId) serviciosArr.push(servicioId);
 
+        if (!horaSelect.value) {
+            alert("Debes seleccionar una hora válida");
+            return;
+        }
+
+        // separar horaExacta y idDisponibilidad
+        let [hora, disponibilidadId] = horaSelect.value.split('|');
+
+     
+
         const payload = {
-            disponibilidad_id: horaSelect.value,
+            disponibilidad_id: disponibilidadId,
+            hora: hora,
             detalle: form.querySelector('textarea[name="detalle"]').value,
             servicios: serviciosArr
         };
 
-        // DEBUG: ver qué estamos enviando
         console.log("payload reserva:", payload);
 
         try {

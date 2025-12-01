@@ -29,7 +29,7 @@ class ReservaController {
     public function store() {
         session_start();
         header('Content-Type: application/json');
-
+        
         $clienteId = $_SESSION['user']['idUsuarios'] ?? null;
         if (!$clienteId) {
             http_response_code(403);
@@ -59,7 +59,7 @@ class ReservaController {
             return;
         }
 
-        $hora = $disp['horaInicio'] ?? null;
+        $hora = $input['hora'] ?? null;
 
         if (!$hora) {
             http_response_code(400);
@@ -67,7 +67,15 @@ class ReservaController {
             return;
         }
 
-        // Crear reserva
+        // Antes de crear reserva
+$model = new Reserva();
+if ($model->existeReserva($disponibilidadId, $hora)) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Esta hora ya está reservada']);
+    return;
+}
+
+// Crear reserva
         $model = new Reserva();
         $reservaId = $model->create($clienteId, $disponibilidadId, $hora, $detalle);
 

@@ -46,11 +46,12 @@ $clienteId = $_SESSION['user']['idUsuarios'];
                 <th class="py-3 px-4">Empleado</th>
                 <th class="py-3 px-4">Servicios</th>
                 <th class="py-3 px-4">Estado</th>
+                <th class="py-3 px-4">Acciones</th> <!-- nueva columna -->
             </tr>
         </thead>
         <tbody id="tablaReservas" class="divide-y divide-gray-200 bg-white">
             <tr>
-                <td colspan="5" class="py-4 text-center text-gray-400">
+                <td colspan="6" class="py-4 text-center text-gray-400">
                     Cargando reservas...
                 </td>
             </tr>
@@ -63,7 +64,6 @@ $clienteId = $_SESSION['user']['idUsuarios'];
 document.addEventListener("DOMContentLoaded", cargarReservas);
 
 async function cargarReservas() {
-
     const clienteId = <?= json_encode($clienteId); ?>;
     const tbody = document.getElementById("tablaReservas");
 
@@ -72,7 +72,7 @@ async function cargarReservas() {
 
         if (!resp.ok) {
             tbody.innerHTML = `
-                <tr><td colspan="5" class="py-4 text-center text-red-500">
+                <tr><td colspan="6" class="py-4 text-center text-red-500">
                     Error cargando reservas (HTTP ${resp.status})
                 </td></tr>`;
             return;
@@ -82,12 +82,13 @@ async function cargarReservas() {
 
         if (!Array.isArray(reservas) || reservas.length === 0) {
             tbody.innerHTML = `
-                <tr><td colspan="5" class="py-4 text-center text-gray-500">
+                <tr><td colspan="6" class="py-4 text-center text-gray-500">
                     No hiciste ninguna reserva todavía.
                 </td></tr>`;
             return;
         }
 
+        // Renderizar tabla completa
         tbody.innerHTML = reservas.map(r => `
             <tr>
                 <td class="py-3 px-4">${r.fecha || '--'}</td>
@@ -103,15 +104,47 @@ async function cargarReservas() {
                         ${r.estado}
                     </span>
                 </td>
+                <td class="py-3 px-4">
+                    <button onclick="eliminarReserva(${r.idReservas})"
+                        class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+                        Eliminar
+                    </button>
+                </td>
             </tr>
         `).join("");
 
     } catch(err) {
         console.error(err);
         tbody.innerHTML = `
-            <tr><td colspan="5" class="py-4 text-center text-red-500">
+            <tr><td colspan="6" class="py-4 text-center text-red-500">
                 Error cargando reservas.
             </td></tr>`;
+    }
+}
+
+// ======================================================
+// FUNCIÓN PARA ELIMINAR RESERVA
+// ======================================================
+async function eliminarReserva(id) {
+    if (!confirm("¿Seguro que deseas eliminar esta reserva?")) return;
+
+    try {
+        const resp = await fetch(`/DisenioWeb2/backEnd/public/reservas/${id}`, {
+            method: "DELETE"
+        });
+
+        const result = await resp.json();
+
+        if (result.success) {
+            alert("Reserva eliminada correctamente");
+            cargarReservas(); // recargar tabla
+        } else {
+            alert("No se pudo eliminar la reserva");
+        }
+
+    } catch (err) {
+        console.error(err);
+        alert("Error al eliminar la reserva");
     }
 }
 </script>

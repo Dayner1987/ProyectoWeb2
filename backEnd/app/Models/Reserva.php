@@ -103,4 +103,27 @@ class Reserva {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
+    // Verifica si ya existe reserva para esa disponibilidad y hora
+public function existeReserva($disponibilidadId, $hora) {
+    $hora = date('H:i:s', strtotime($hora));
+
+    $sql = "SELECT COUNT(*) FROM Reservas 
+            WHERE disponibilidad_id = :disp AND hora = :hora";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(':disp', $disponibilidadId, PDO::PARAM_INT);
+    $stmt->bindParam(':hora', $hora);
+    $stmt->execute();
+
+    return $stmt->fetchColumn() > 0;
+}
+
+public function checkHora($disponibilidadId, $hora) {
+    $sql = "SELECT COUNT(*) FROM Reservas WHERE disponibilidad_id=:disp AND hora=:hora";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(':disp', $disponibilidadId, PDO::PARAM_INT);
+    $stmt->bindParam(':hora', $hora);
+    $stmt->execute();
+    return $stmt->fetchColumn() > 0;
+}
+
 }
