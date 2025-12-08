@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluqueria-barberia</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lightbox CSS -->
+
+  <link rel="stylesheet" href="gallery/dist/css/lightbox.min.css">
+
+    <!-- Librerías adicionales -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- AOS Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <!-- Fondo personalizable -->
+    <div class="fixed inset-0 -z-10 bg-cover bg-center opacity-95" id="fondoPersonalizado"></div>
+
+    <!-- Navbar moderno -->
+    <header id="navbar" class="bg-transparent fixed w-full z-50 transition-colors duration-500 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+               
+                <div class="flex items-center gap-4">
+                    <span id="empresaNombre" class="text-3xl font-bold text-orange-400 drop-shadow-md">Peluquería Reflejos</span>
+                </div>
+
+                <!-- Menú escritorio -->
+                <nav class="hidden md:flex items-center space-x-10 text-lg">
+                    <a href="index.php" class="text-orange-400 hover:text-orange-300 transition">Inicio</a>
+                    <a href="pages/otros/Informaciíon.php" class="text-orange-400 hover:text-orange-300 transition">Información</a>
+                    <a href="#servicios" class="text-orange-400 hover:text-orange-300 transition">Servicios</a>
+                    <a href="#servicios" class="text-orange-400 hover:text-orange-300 transition">Galeria</a>
+                    <a href="/DisenioWeb2/backEnd/public/login" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-semibold transition">Iniciar Sesión</a>
+                </nav>
+
+                <!-- Menú Hamburguesa -->
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-white focus:outline-none">
+                        <i data-feather="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2 text-orange-400 text-lg">
+            <a href="#inicio" class="block hover:text-orange-300">Inicio</a>
+            <a href="#nosotros" class="block hover:text-orange-300">Sobre Nosotros</a>
+            <a href="#servicios" class="block hover:text-orange-300">Servicios</a>
+            <a href="#portafolio" class="block hover:text-orange-300">Portafolio</a>
+            <a href="/DisenioWeb2/backEnd/public/login" class="block hover:text-orange-300 font-semibold">Iniciar Sesión</a>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="pt-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+
+    </main>
+<!-- Botón Scroll Top -->
+<button id="scrollTopBtn"
+    class="fixed bottom-6 right-6 bg-orange-600 text-white w-12 h-12 rounded-full
+           shadow-xl flex items-center justify-center text-2xl font-bold
+           opacity-0 pointer-events-none transition-all duration-300 z-50">
+    ↑
+</button>
+<script>
+    const scrollBtn = document.getElementById("scrollTopBtn");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            scrollBtn.classList.remove("opacity-0", "pointer-events-none");
+        } else {
+            scrollBtn.classList.add("opacity-0", "pointer-events-none");
+        }
+    });
+
+    scrollBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script>
+
+    <!-- Footer dinámico con fondo negro y acento naranja -->
+    <footer class="mt-20 bg-black text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-6">
+            <div class="flex flex-col items-start gap-2">
+                <img id="empresaLogo2" src="img/default-logo.png" alt="Logo Empresa" class="w-64 rounded-xl shadow-md" data-aos="fade-right">
+                <h2 id="empresaNombreFooter" class="text-xl font-bold text-orange-500">Peluquería Reflejos</h2>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h3 class="font-semibold text-orange-400 text-lg">Contacto</h3>
+                <a id="footerWhatsApp" href="#" class="hover:text-orange-300 transition">WhatsApp: +591 77975489</a>
+                <a id="footerCorreo" href="#" class="hover:text-orange-300 transition">Correo: info@peluqueria.com</a>
+                <p id="footerDireccion" class="hover:text-orange-300 transition">Dirección: Calle Falsa 123, La Paz</p>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h3 class="font-semibold text-orange-400 text-lg">Síguenos</h3>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-orange-300"><i data-feather="instagram"></i></a>
+                    <a href="#" class="hover:text-orange-300"><i data-feather="facebook"></i></a>
+                    <a href="#" class="hover:text-orange-300"><i data-feather="twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="gallery/dist/js/lightbox-plus-jquery.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({duration:800, once:false});</script>
+<script src="/info.js"></script>
+
+
+
+<script>
+    lightbox.option({
+        'resizeDuration': 200,
+        'fadeDuration': 200,
+        'imageFadeDuration': 200,
+        'wrapAround': true,
+        'alwaysShowNavOnTouchDevices': true,
+        'fitImagesInViewport': true,
+        'showImageNumberLabel': true,
+        'positionFromTop': 50
+    });
+</script>
+
+</body>
+</html>

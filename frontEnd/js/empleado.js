@@ -1,6 +1,6 @@
-// ======================================================
-// CARGAR SERVICIOS EN TABLA (con check si el empleado lo realiza)
-// ======================================================
+let disponibilidadesActuales = [];
+
+
 // ======================================================
 // CARGAR SERVICIOS DEL EMPLEADO + TODOS LOS SERVICIOS
 // ======================================================
@@ -40,7 +40,7 @@ Promise.all([
         `;
         tabla.appendChild(tr);
     });
-
+cargarServicios();
 });
 
 
@@ -52,6 +52,8 @@ function cargarDisponibilidades() {
     fetch("http://localhost/DisenioWeb2/backEnd/public/disponibilidades")
         .then(r => r.json())
         .then(data => {
+            disponibilidadesActuales = data; // ← Guardamos en memoria
+
             const tabla = document.getElementById("tablaDisp");
             tabla.innerHTML = "";
 
@@ -73,6 +75,27 @@ function cargarDisponibilidades() {
                 tabla.appendChild(tr);
             });
         });
+}
+function hayCruce(fecha, inicio, fin) {
+    // Convertir a minutos
+    function aMinutos(h) {
+        const [H, M] = h.split(":");
+        return parseInt(H) * 60 + parseInt(M);
+    }
+
+    const iniNuevo = aMinutos(inicio);
+    const finNuevo = aMinutos(fin);
+
+    return disponibilidadesActuales.some(d => {
+
+        if (d.fecha !== fecha) return false; // solo validar fecha igual
+
+        const iniExist = aMinutos(d.horaInicio);
+        const finExist = aMinutos(d.horaFin);
+
+        // Detectar cruce
+        return iniNuevo < finExist && finNuevo > iniExist;
+    });
 }
 
 
@@ -99,6 +122,8 @@ function eliminarDisp(id) {
             .then(data => {
                 Swal.fire("Listo", data.message, "success");
                 cargarDisponibilidades();
+                cargarServicios();
+
             });
         }
     });
@@ -117,6 +142,22 @@ flatpickr("#horaFin", { enableTime: true, noCalendar: true, dateFormat: "H:i" })
 document.getElementById("formDisp").addEventListener("submit", e => {
     e.preventDefault();
 
+    const fecha = document.getElementById("fecha").value;
+    const inicio = document.getElementById("horaInicio").value;
+    const fin = document.getElementById("horaFin").value;
+    const error = document.getElementById("errorHoras");
+
+    // Validación de cruce
+    if (hayCruce(fecha, inicio, fin)) {
+        error.textContent = "⚠ Ya existe una disponibilidad que se cruza con este horario.";
+        error.classList.remove("hidden");
+        return;
+    }
+
+    // Si todo ok → ocultar error
+    error.classList.add("hidden");
+    error.textContent = "";
+
     const datos = new URLSearchParams(new FormData(e.target));
 
     fetch("http://localhost/DisenioWeb2/backEnd/public/disponibilidades/create", {
@@ -128,11 +169,47 @@ document.getElementById("formDisp").addEventListener("submit", e => {
         Swal.fire("Listo", data.message, "success");
         e.target.reset();
         cargarDisponibilidades();
+        cargarServicios();
     });
 });
 
-function toggleServicio(id, activo) {
+function cargarServicios() {
+    Promise.all([
+        fetch("http://localhost/DisenioWeb2/backEnd/public/servicios").then(r => r.json()),
+        fetch("http://localhost/DisenioWeb2/backEnd/public/servicio-empleado").then(r => r.json())
+    ])
+    .then(([todosServicios, misServicios]) => {
+        misServicios = misServicios.map(Number);
+        const tabla = document.getElementById("tablaServicios");
+        tabla.innerHTML = "";
 
+        todosServicios.forEach(s => {
+            const activado = misServicios.includes(Number(s.idServicios));
+
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td class="p-2">${s.nombreServicio}</td>
+                <td class="p-2 text-center">
+                    <label class="inline-flex items-center cursor-pointer">
+
+                        <input type="checkbox" ${activado ? "checked" : ""}
+                            onchange="toggleServicio(${s.idServicios}, this.checked)"
+                            class="sr-only peer">
+
+                        <div class="w-11 h-6 rounded-full transition
+                            ${activado ? "bg-green-600" : "bg-gray-300"} 
+                            peer-checked:bg-green-600">
+                        </div>
+
+                    </label>
+                </td>
+            `;
+            tabla.appendChild(tr);
+        });
+    });
+}
+
+function toggleServicio(id, activo) {
     const url = activo
         ? "http://localhost/DisenioWeb2/backEnd/public/servicio-empleado/add"
         : `http://localhost/DisenioWeb2/backEnd/public/servicio-empleado/remove/${id}`;
@@ -143,9 +220,8 @@ function toggleServicio(id, activo) {
     })
     .then(r => r.json())
     .then(data => {
-        Swal.fire("Listo", 
-            activo ? "Servicio activado" : "Servicio desactivado",
-            "success"
-        );
+
+        cargarServicios();
     });
 }
+

@@ -27,7 +27,7 @@ $success = $success ?? '';
     </style>
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-indigo-600 to-purple-500 flex items-center justify-center">
+<body class="min-h-screen bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
 
 <div class="w-full max-w-md bg-white/20 backdrop-blur-lg rounded-2xl p-10 shadow-xl animate-fadeIn">
 
@@ -78,20 +78,15 @@ $success = $success ?? '';
         </div>
     </div>
 
-    <!-- === ROL AGREGADO === -->
-
-    <!-- ==================== -->
-
     <button type="submit"
-            class="w-full bg-indigo-700 hover:bg-indigo-800 text-white py-3 rounded-xl font-semibold shadow-lg transition mt-4">
+            class="w-full bg-orange-700 hover:bg-orange-800 text-white py-3 rounded-xl font-semibold shadow-lg transition mt-4">
         Registrarse
     </button>
 </form>
 
-
     <p class="text-white mt-6 text-center">
         ¿Ya tienes cuenta?
-        <a href="/login" class="text-yellow-300 font-semibold">Inicia Sesión</a>
+        <a href="/DisenioWeb2/backEnd/public/login"class="text-yellow-300 font-semibold">Inicia Sesión</a>
     </p>
 
 </div>

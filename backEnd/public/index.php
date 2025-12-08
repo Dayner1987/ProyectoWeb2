@@ -135,7 +135,7 @@ case ($uri === '/disponibilidades' && $method === 'GET'):
     break;
 
 case ($uri === '/disponibilidades/create' && $method === 'POST'):
-    (new DisponibilidadController())->store();
+    (new DisponibilidadController())->create();
     break;
 
 case (preg_match('/^\/disponibilidades\/delete\/(\d+)$/', $uri, $m) && $method === 'POST'):

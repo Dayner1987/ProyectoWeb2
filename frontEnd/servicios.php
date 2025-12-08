@@ -81,150 +81,116 @@
     </div>
 </div>
 
-<!-- Galería -->
-<section class="gallery flex flex-wrap justify-center gap-6 mt-10">
+<section class="mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+    <h2 class="text-4xl font-bold text-center text-orange-500 mb-10">Nuestros Servicios</h2>
 
-    <!-- Imagen 1 -->
-    <a href="img/image2.jpg" data-lightbox="galeria" data-title="Corte femenino moderno">
-        <img src="img/image1.jpg"
-             class="rounded shadow-xl hover:scale-105 transition-transform gallery-img"
-             alt="Mujer con un nuevo corte" width="260">
-    </a>
-
-    <!-- Imagen 2 -->
-    <a href="img/image3.jpg" data-lightbox="galeria" data-title="Corte masculino clásico">
-        <img src="img/image2.jpg"
-             class="rounded shadow-xl hover:scale-105 transition-transform gallery-img"
-             alt="Corte masculino clásico" width="260">
-    </a>
-
-    <!-- Imagen 3 -->
-    <a href="img/image1.jpg" data-lightbox="galeria" data-title="Barba premium y cuidado facial">
-        <img src="img/image3.jpg"
-             class="rounded shadow-xl hover:scale-105 transition-transform gallery-img"
-             alt="Barba premium" width="260">
-    </a>
-
-</section>
-
-
-      <!-- Sección de info -->
-      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-          <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-10 items-center" data-aos="fade-up">
-              <img src="img/image1.jpg" alt="Ejemplo" class="w-80 rounded-xl shadow-lg" data-aos="fade-right">
-              <div data-aos="fade-left">
-                  <h3 class="text-3xl font-bold text-orange-400 mb-4">Tu Mejor Estilo Te Espera</h3>
-                  <p class="text-gray-700 leading-relaxed mb-6">
-                      Nuestro equipo altamente capacitado te brinda cortes modernos, tintes profesionales y una atención personalizada.
-                  </p>
-                  <button class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-lg transition-transform hover:scale-105" data-aos="zoom-in">Agendar Cita</button>
-              </div>
-          </div>
-      </section>
-      <!-- ============================= -->
-<!--   SECCIÓN: SERVICIOS (3 ICONOS) -->
-<!-- ============================= -->
-<section class="mt-20">
-    <h2 class="text-4xl font-bold text-center text-orange-500 mb-10" data-aos="fade-up">
-        Nuestros Servicios
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Servicio 1 -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition-transform"
-             data-aos="fade-right">
-            <i data-feather="scissors" class="w-16 h-16 text-orange-500 mx-auto mb-4"></i>
-            <h3 class="text-2xl font-semibold text-gray-800">Corte de Cabello</h3>
-            <p class="text-gray-600 mt-3">Estilos modernos y clásicos adaptados a ti.</p>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:scale-105 transition transform" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="text-2xl font-bold text-orange-400 mb-2">Servicio 1</h3>
+            <p class="text-gray-700">Descripción breve del servicio que se ofrece. Aquí puedes colocar detalles cortos y atractivos.</p>
         </div>
 
         <!-- Servicio 2 -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition-transform"
-             data-aos="fade-up">
-            <i data-feather="droplet" class="w-16 h-16 text-orange-500 mx-auto mb-4"></i>
-            <h3 class="text-2xl font-semibold text-gray-800">Tinturas</h3>
-            <p class="text-gray-600 mt-3">Coloración profesional con productos premium.</p>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:scale-105 transition transform" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="text-2xl font-bold text-orange-400 mb-2">Servicio 2</h3>
+            <p class="text-gray-700">Descripción breve del servicio que se ofrece. Aquí puedes colocar detalles cortos y atractivos.</p>
         </div>
 
         <!-- Servicio 3 -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition-transform"
-             data-aos="fade-left">
-            <i data-feather="sparkles" class="w-16 h-16 text-orange-500 mx-auto mb-4"></i>
-            <h3 class="text-2xl font-semibold text-gray-800">Barbería</h3>
-            <p class="text-gray-600 mt-3">Afeitado premium y perfilado perfecto.</p>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:scale-105 transition transform" data-aos="fade-up" data-aos-delay="300">
+            <h3 class="text-2xl font-bold text-orange-400 mb-2">Servicio 3</h3>
+            <p class="text-gray-700">Descripción breve del servicio que se ofrece. Aquí puedes colocar detalles cortos y atractivos.</p>
         </div>
+    </div>
+</section>
+<section class="mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+    <h2 class="text-4xl font-bold text-center text-orange-500 mb-10">Precios de Nuestros Servicios</h2>
 
+    <div class="overflow-x-auto rounded-2xl shadow-lg bg-white">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-orange-400 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-left">Servicio</th>
+                    <th class="px-6 py-3 text-left">Precio</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                <tr>
+                    <td class="px-6 py-4">Corte de Cabello</td>
+                    <td class="px-6 py-4">$50</td>
+                </tr>
+                <tr>
+                    <td class="px-6 py-4">Coloración</td>
+                    <td class="px-6 py-4">$80</td>
+                </tr>
+                <tr>
+                    <td class="px-6 py-4">Peinado</td>
+                    <td class="px-6 py-4">$40</td>
+                </tr>
+                <!-- Agrega más filas según necesites -->
+            </tbody>
+        </table>
     </div>
 </section>
 
 
-<!-- ============================= -->
-<!--   SECCIÓN: ESTILISTAS (TARJETAS) -->
-<!-- ============================= -->
-<section class="mt-28">
-    <h2 class="text-4xl font-bold text-center text-orange-500 mb-12" data-aos="fade-up">
-        Estilistas Disponibles
-    </h2>
+<!-- Sección Últimas Novedades -->
+<section class="mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+    <h2 class="text-4xl font-bold text-center text-orange-500 mb-10">Últimas Novedades</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-
-        <!-- Estilista 1 -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition"
-             data-aos="zoom-in">
-            <img src="img/image1.jpg" class="rounded-full w-40 h-40 object-cover mx-auto shadow-lg mb-4">
-            <h3 class="text-2xl font-semibold text-gray-800">Carlos Gómez</h3>
-            <i data-feather="user" class="w-10 h-10 text-orange-500 mt-2"></i>
+    <div class="relative">
+        <!-- Carrusel -->
+        <div id="carruselNovedades" class="flex gap-6 overflow-hidden transition-transform duration-500">
+            <!-- Servicios se cargarán aquí dinámicamente -->
         </div>
 
-        <!-- Estilista 2 -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition"
-             data-aos="zoom-in" data-aos-delay="100">
-            <img src="img/image2.jpg" class="rounded-full w-40 h-40 object-cover mx-auto shadow-lg mb-4">
-            <h3 class="text-2xl font-semibold text-gray-800">María Castro</h3>
-            <i data-feather="user" class="w-10 h-10 text-orange-500 mt-2"></i>
-        </div>
-
-        <!-- Estilista 3 -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition"
-             data-aos="zoom-in" data-aos-delay="200">
-            <img src="img/image3.jpg" class="rounded-full w-40 h-40 object-cover mx-auto shadow-lg mb-4">
-            <h3 class="text-2xl font-semibold text-gray-800">Luis Pereira</h3>
-            <i data-feather="user" class="w-10 h-10 text-orange-500 mt-2"></i>
-        </div>
-
+        <!-- Botones -->
+        <button id="prevNovedades" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white px-3 py-2 rounded-full shadow-xl transition">◄</button>
+        <button id="nextNovedades" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white px-3 py-2 rounded-full shadow-xl transition">►</button>
     </div>
 </section>
 
+<script>
+const API_URL = "http://localhost/DisenioWeb2/backEnd/public/servicios";
+const carrusel = document.getElementById('carruselNovedades');
+let index = 0;
+let serviciosData = [];
 
-<!-- ============================= -->
-<!--   SECCIÓN: SERVICIOS DETALLADOS -->
-<!-- ============================= -->
-<section class="mt-28 mb-20 max-w-7xl mx-auto" data-aos="fade-up">
-    <div class="bg-white rounded-2xl shadow-xl p-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+async function cargarServiciosNovedades() {
+    try {
+        const res = await fetch(API_URL);
+        serviciosData = await res.json();
 
-        <!-- Imagen derecha -->
-        <img src="img/image2.jpg" alt="Servicio" 
-             class="rounded-xl shadow-lg order-2 md:order-1" data-aos="fade-right">
+        carrusel.innerHTML = '';
+        serviciosData.forEach(s => {
+            carrusel.innerHTML += `
+                <div class="min-w-[250px] bg-white p-4 rounded-2xl shadow-lg hover:scale-105 transition transform">
+                    <h3 class="text-xl font-bold text-orange-400 mb-2">${s.nombreServicio}</h3>
+                    <p class="text-gray-700">${s.descripcionServicio ?? 'Descripción breve...'}</p>
+                </div>
+            `;
+        });
+    } catch (err) {
+        console.error("Error al cargar los servicios:", err);
+    }
+}
 
-        <!-- Texto -->
-        <div class="order-1 md:order-2">
-            <h3 class="text-3xl font-bold text-orange-500 mb-4">Servicio Destacado</h3>
+document.getElementById('nextNovedades').addEventListener('click', () => {
+    if(index < serviciosData.length - 3) index++;
+    carrusel.style.transform = `translateX(-${index * 260}px)`;
+});
 
-            <p class="text-gray-700 mb-6">
-                Aquí puedes agregar una descripción completa del servicio, beneficios
-                y cualquier detalle que desees personalizar.
-            </p>
+document.getElementById('prevNovedades').addEventListener('click', () => {
+    if(index > 0) index--;
+    carrusel.style.transform = `translateX(-${index * 260}px)`;
+});
 
-            <!-- Ejemplo servicio + costo -->
-            <div class="bg-orange-100 border-l-4 border-orange-500 p-4 rounded-lg shadow-md">
-                <h4 class="text-xl font-semibold text-orange-600">Corte + Barba Premium</h4>
-                <p class="text-gray-700 mt-1 font-bold text-lg">Costo: 60 Bs.</p>
-            </div>
-        </div>
+cargarServiciosNovedades();
+</script>
 
-    </div>
-</section>
+
+     
 
     </main>
 <!-- Botón Scroll Top -->

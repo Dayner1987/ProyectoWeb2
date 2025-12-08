@@ -9,32 +9,96 @@ if (!isset($_SESSION['user'])) {
 
 $clienteId = $_SESSION['user']['idUsuarios'];
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Reservas</title>
+    <title>Peluqueria-barberia</title>
 
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="css/lightbox.min.css">
+
+    <!-- Librerías adicionales -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- AOS Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="css/index.css">
 </head>
+<body class="bg-gray-50 font-sans pt-0">
 
-<body class="bg-gray-100">
 
-<header class="bg-orange-500 text-white py-5 shadow-md">
-    <div class="max-w-5xl mx-auto flex justify-between items-center px-4">
-        <h1 class="text-3xl font-bold">Mis Reservas</h1>
-        <a href="indexCliente.php" class="text-white underline">Volver</a>
+    <!-- Fondo personalizable -->
+    <div class="fixed inset-0 -z-10 bg-cover bg-center opacity-95" id="fondoPersonalizado"></div>
+
+    <!-- Navbar moderno -->
+    <header id="navbar" class="bg-transparent fixed w-full z-50 transition-colors duration-500 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+               
+                <div class="flex items-center gap-4">
+                    <span id="empresaNombre" class="text-3xl font-bold text-orange-400 drop-shadow-md">Peluquería Reflejos</span>
+                </div>
+
+               <!-- Menú escritorio -->
+                <nav class="hidden md:flex items-center space-x-10 text-lg">
+                    <a href="../../index.php" class="text-orange-400 hover:text-orange-300 transition">Inicio</a>
+                    <a href="../../informacion.php" class="text-orange-400 hover:text-orange-300 transition">Información</a>
+                    <a href="../../servicios.php" class="text-orange-400 hover:text-orange-300 transition">Servicios</a>
+                    <a href="../../galeria.php" class="text-orange-400 hover:text-orange-300 transition">Galeria</a>
+                    <button id="logoutBtn" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-semibold transition">
+  Cerrar Sesión
+</button>
+<script>
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+    try {
+        await fetch('/DisenioWeb2/backEnd/public/logout', { method: 'POST' });
+        window.location.href = '/DisenioWeb2/backEnd/public/login';
+    } catch(err) {
+        console.error('Error cerrando sesión:', err);
+    }
+});
+</script>
+
+<script>
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+    try {
+        await fetch('/DisenioWeb2/backEnd/public/logout', { method: 'POST' });
+        window.location.href = '/DisenioWeb2/backEnd/public/login';
+    } catch(err) {
+        console.error('Error cerrando sesión:', err);
+    }
+});
+</script>
+
+                </nav>
+
+                <!-- Menú Hamburguesa -->
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-white focus:outline-none">
+                        <i data-feather="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </header>
+<section class="pt-28">
+    <div class="flex justify-between items-center max-w-5xl mx-auto mt-6 px-4">
+        <h2 class="text-2xl font-semibold text-gray-700">Reservas pendientes</h2>
+        <a href="reservasC.php" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded font-semibold">
+            Crear nueva reserva
+        </a>
     </div>
-</header>
+</section>
 
-<div class="flex justify-between items-center max-w-5xl mx-auto mt-6 px-4">
-    <h2 class="text-2xl font-semibold text-gray-700">Reservas pendientes</h2>
-    <a href="reservasC.php" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded font-semibold">
-        Crear nueva reserva
-    </a>
-</div>
+    
 
 <main class="max-w-5xl mx-auto mt-6 bg-white shadow-lg rounded-lg p-6">
 
@@ -148,6 +212,36 @@ async function eliminarReserva(id) {
     }
 }
 </script>
+
+    <!-- Footer dinámico con fondo negro y acento naranja -->
+    <footer class="mt-20 bg-black text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-6">
+            <div class="flex flex-col items-start gap-2">
+                <img id="empresaLogo2" src="img/default-logo.png" alt="Logo Empresa" class="w-64 rounded-xl shadow-md" data-aos="fade-right">
+                <h2 id="empresaNombreFooter" class="text-xl font-bold text-orange-500">Peluquería Reflejos</h2>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h3 class="font-semibold text-orange-400 text-lg">Contacto</h3>
+                <a id="footerWhatsApp" href="#" class="hover:text-orange-300 transition">WhatsApp: +591 77975489</a>
+                <a id="footerCorreo" href="#" class="hover:text-orange-300 transition">Correo: info@peluqueria.com</a>
+                <p id="footerDireccion" class="hover:text-orange-300 transition">Dirección: Calle Falsa 123, La Paz</p>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h3 class="font-semibold text-orange-400 text-lg">Síguenos</h3>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-orange-300"><i data-feather="instagram"></i></a>
+                    <a href="#" class="hover:text-orange-300"><i data-feather="facebook"></i></a>
+                    <a href="#" class="hover:text-orange-300"><i data-feather="twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/lightbox-plus-jquery.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({duration:800, once:false});</script>
+    <script src="../../js/info.js"></script>
 
 </body>
 </html>

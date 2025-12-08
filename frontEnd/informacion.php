@@ -80,150 +80,178 @@
         </p>
     </div>
 </div>
+<!-- ======================================= -->
+<!-- SECCIÓN: HISTORIA DE LA EMPRESA -->
+<!-- ======================================= -->
+<section class="mt-20 p-6 bg-white rounded-2xl shadow-xl" data-aos="fade-up">
 
-<!-- Galería -->
-<section class="gallery flex flex-wrap justify-center gap-6 mt-10">
-
-    <!-- Imagen 1 -->
-    <a href="img/image2.jpg" data-lightbox="galeria" data-title="Corte femenino moderno">
-        <img src="img/image1.jpg"
-             class="rounded shadow-xl hover:scale-105 transition-transform gallery-img"
-             alt="Mujer con un nuevo corte" width="260">
-    </a>
-
-    <!-- Imagen 2 -->
-    <a href="img/image3.jpg" data-lightbox="galeria" data-title="Corte masculino clásico">
-        <img src="img/image2.jpg"
-             class="rounded shadow-xl hover:scale-105 transition-transform gallery-img"
-             alt="Corte masculino clásico" width="260">
-    </a>
-
-    <!-- Imagen 3 -->
-    <a href="img/image1.jpg" data-lightbox="galeria" data-title="Barba premium y cuidado facial">
-        <img src="img/image3.jpg"
-             class="rounded shadow-xl hover:scale-105 transition-transform gallery-img"
-             alt="Barba premium" width="260">
-    </a>
-
-</section>
-
-
-      <!-- Sección de info -->
-      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-          <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-10 items-center" data-aos="fade-up">
-              <img src="img/image1.jpg" alt="Ejemplo" class="w-80 rounded-xl shadow-lg" data-aos="fade-right">
-              <div data-aos="fade-left">
-                  <h3 class="text-3xl font-bold text-orange-400 mb-4">Tu Mejor Estilo Te Espera</h3>
-                  <p class="text-gray-700 leading-relaxed mb-6">
-                      Nuestro equipo altamente capacitado te brinda cortes modernos, tintes profesionales y una atención personalizada.
-                  </p>
-                  <button class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-lg transition-transform hover:scale-105" data-aos="zoom-in">Agendar Cita</button>
-              </div>
-          </div>
-      </section>
-      <!-- ============================= -->
-<!--   SECCIÓN: SERVICIOS (3 ICONOS) -->
-<!-- ============================= -->
-<section class="mt-20">
-    <h2 class="text-4xl font-bold text-center text-orange-500 mb-10" data-aos="fade-up">
-        Nuestros Servicios
+    <h2 class="text-4xl font-bold text-orange-500 mb-10 text-center">
+        Nuestra Historia
     </h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
 
-        <!-- Servicio 1 -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition-transform"
-             data-aos="fade-right">
-            <i data-feather="scissors" class="w-16 h-16 text-orange-500 mx-auto mb-4"></i>
-            <h3 class="text-2xl font-semibold text-gray-800">Corte de Cabello</h3>
-            <p class="text-gray-600 mt-3">Estilos modernos y clásicos adaptados a ti.</p>
-        </div>
-
-        <!-- Servicio 2 -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition-transform"
-             data-aos="fade-up">
-            <i data-feather="droplet" class="w-16 h-16 text-orange-500 mx-auto mb-4"></i>
-            <h3 class="text-2xl font-semibold text-gray-800">Tinturas</h3>
-            <p class="text-gray-600 mt-3">Coloración profesional con productos premium.</p>
-        </div>
-
-        <!-- Servicio 3 -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition-transform"
-             data-aos="fade-left">
-            <i data-feather="sparkles" class="w-16 h-16 text-orange-500 mx-auto mb-4"></i>
-            <h3 class="text-2xl font-semibold text-gray-800">Barbería</h3>
-            <p class="text-gray-600 mt-3">Afeitado premium y perfilado perfecto.</p>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ============================= -->
-<!--   SECCIÓN: ESTILISTAS (TARJETAS) -->
-<!-- ============================= -->
-<section class="mt-28">
-    <h2 class="text-4xl font-bold text-center text-orange-500 mb-12" data-aos="fade-up">
-        Estilistas Disponibles
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-
-        <!-- Estilista 1 -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition"
-             data-aos="zoom-in">
-            <img src="img/image1.jpg" class="rounded-full w-40 h-40 object-cover mx-auto shadow-lg mb-4">
-            <h3 class="text-2xl font-semibold text-gray-800">Carlos Gómez</h3>
-            <i data-feather="user" class="w-10 h-10 text-orange-500 mt-2"></i>
-        </div>
-
-        <!-- Estilista 2 -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition"
-             data-aos="zoom-in" data-aos-delay="100">
-            <img src="img/image2.jpg" class="rounded-full w-40 h-40 object-cover mx-auto shadow-lg mb-4">
-            <h3 class="text-2xl font-semibold text-gray-800">María Castro</h3>
-            <i data-feather="user" class="w-10 h-10 text-orange-500 mt-2"></i>
-        </div>
-
-        <!-- Estilista 3 -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition"
-             data-aos="zoom-in" data-aos-delay="200">
-            <img src="img/image3.jpg" class="rounded-full w-40 h-40 object-cover mx-auto shadow-lg mb-4">
-            <h3 class="text-2xl font-semibold text-gray-800">Luis Pereira</h3>
-            <i data-feather="user" class="w-10 h-10 text-orange-500 mt-2"></i>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ============================= -->
-<!--   SECCIÓN: SERVICIOS DETALLADOS -->
-<!-- ============================= -->
-<section class="mt-28 mb-20 max-w-7xl mx-auto" data-aos="fade-up">
-    <div class="bg-white rounded-2xl shadow-xl p-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-
-        <!-- Imagen derecha -->
-        <img src="img/image2.jpg" alt="Servicio" 
-             class="rounded-xl shadow-lg order-2 md:order-1" data-aos="fade-right">
-
-        <!-- Texto -->
-        <div class="order-1 md:order-2">
-            <h3 class="text-3xl font-bold text-orange-500 mb-4">Servicio Destacado</h3>
-
-            <p class="text-gray-700 mb-6">
-                Aquí puedes agregar una descripción completa del servicio, beneficios
-                y cualquier detalle que desees personalizar.
+        <!-- Texto izquierda -->
+        <div data-aos="fade-right">
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                Somos una peluquería con años de experiencia dedicados a transformar el estilo 
+                de nuestros clientes. Desde nuestros inicios, hemos trabajado con pasión, dedicación 
+                y profesionalismo, manteniendo siempre un trato cálido y cercano.
             </p>
 
-            <!-- Ejemplo servicio + costo -->
-            <div class="bg-orange-100 border-l-4 border-orange-500 p-4 rounded-lg shadow-md">
-                <h4 class="text-xl font-semibold text-orange-600">Corte + Barba Premium</h4>
-                <p class="text-gray-700 mt-1 font-bold text-lg">Costo: 60 Bs.</p>
-            </div>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                A lo largo del tiempo, nuestras habilidades han evolucionado junto con las tendencias 
+                modernas, convirtiéndonos en referencia local. Nuestro compromiso es ofrecer siempre 
+                lo mejor, utilizando productos de alta calidad y métodos actualizados.
+            </p>
+
+            <p class="text-gray-700 text-lg leading-relaxed">
+                Hoy, seguimos creciendo y ampliando nuestros servicios, manteniendo la esencia que 
+                nos distingue: calidad, estilo y confianza.
+            </p>
+        </div>
+
+        <!-- Imagen derecha -->
+        <div data-aos="fade-left">
+            <img src="img/historia.jpg" 
+                 alt="Historia"
+                 class="rounded-2xl shadow-lg w-full object-cover h-80">
         </div>
 
     </div>
+
+</section>
+
+<!-- ======================================= -->
+<!-- SECCIÓN: UBICACIÓN -->
+<!-- ======================================= -->
+<section class="mt-16 p-6 bg-white rounded-2xl shadow-lg" data-aos="fade-up">
+
+    <h2 class="text-4xl font-bold text-orange-500 mb-6 text-center">Nuestra Ubicación</h2>
+
+    <div class="grid md:grid-cols-2 gap-6 items-center">
+
+        <!-- Imagen de ubicación -->
+        <img src="img/ubicacion-demo.jpg" 
+             alt="Mapa ubicación"
+             class="rounded-xl shadow-lg w-full object-cover h-80"
+             data-aos="zoom-in">
+
+        <!-- Información y enlace GPS -->
+        <div class="flex flex-col gap-4">
+            <p class="text-lg text-gray-700">
+                Encuéntranos fácilmente en nuestra sucursal principal.
+                Contamos con una ubicación accesible y cerca de transporte público.
+            </p>
+
+            <a href="https://www.google.com/maps?q=-16.499,-68.132" 
+               target="_blank"
+               class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-xl w-fit shadow-md transition flex items-center gap-2">
+                <i data-feather="map-pin"></i> Abrir en Google Maps
+            </a>
+        </div>
+
+    </div>
+</section>
+<!-- ======================================= -->
+<!-- SECCIÓN: CERTIFICACIONES -->
+<!-- ======================================= -->
+<section class="mt-20 p-6 bg-gradient-to-r from-orange-400 to-yellow-300 rounded-2xl shadow-lg" data-aos="fade-up">
+
+    <h2 class="text-4xl text-white font-bold mb-10 text-center">
+        Certificaciones y Reconocimientos
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Certificado 1 -->
+        <div class="bg-white rounded-2xl shadow-lg p-4" data-aos="zoom-in">
+            <img src="img/certificado1.jpg" 
+                 alt="Certificado 1"
+                 class="rounded-xl h-56 w-full object-cover">
+            <h3 class="mt-3 text-center font-bold text-gray-700">Certificado 1</h3>
+        </div>
+
+        <!-- Certificado 2 -->
+        <div class="bg-white rounded-2xl shadow-lg p-4" data-aos="zoom-in" data-aos-delay="100">
+            <img src="img/certificado2.jpg"
+                 alt="Certificado 2"
+                 class="rounded-xl h-56 w-full object-cover">
+            <h3 class="mt-3 text-center font-bold text-gray-700">Certificado 2</h3>
+        </div>
+
+        <!-- Certificado 3 -->
+        <div class="bg-white rounded-2xl shadow-lg p-4" data-aos="zoom-in" data-aos-delay="200">
+            <img src="img/certificado3.jpg"
+                 alt="Certificado 3"
+                 class="rounded-xl h-56 w-full object-cover">
+            <h3 class="mt-3 text-center font-bold text-gray-700">Certificado 3</h3>
+        </div>
+
+    </div>
+
+</section>
+<!-- ======================================= -->
+<!-- SECCIÓN: TESTIMONIOS -->
+<!-- ======================================= -->
+<section class="mt-20 p-6 bg-gradient-to-r from-orange-400 to-yellow-300 rounded-2xl shadow-xl" data-aos="fade-up">
+
+    <h2 class="text-4xl font-bold text-white mb-10 text-center">
+        Lo Que Dicen Nuestros Clientes
+    </h2>
+
+    <!-- Contenedor scroll horizontal -->
+    <div class="flex gap-6 overflow-x-auto pb-4 scroll-smooth"
+         style="scrollbar-width: thin;"
+         data-aos="zoom-in">
+
+        <!-- Testimonio 1 -->
+        <div class="min-w-[300px] bg-white p-6 rounded-2xl shadow-lg flex flex-col gap-4">
+            <p class="text-gray-700 italic">
+                “Excelente atención y trabajo profesional. Siempre salgo con un look increíble.”
+            </p>
+            <span class="font-bold text-orange-500">— Andrea M.</span>
+        </div>
+
+        <!-- Testimonio 2 -->
+        <div class="min-w-[300px] bg-white p-6 rounded-2xl shadow-lg flex flex-col gap-4">
+            <p class="text-gray-700 italic">
+                “Ambiente agradable, personal capacitado y resultados garantizados. Recomendado.”
+            </p>
+            <span class="font-bold text-orange-500">— Luis R.</span>
+        </div>
+
+        <!-- Testimonio 3 -->
+        <div class="min-w-[300px] bg-white p-6 rounded-2xl shadow-lg flex flex-col gap-4">
+            <p class="text-gray-700 italic">
+                “La mejor peluquería de la zona. Cortes modernos y muy buena atención.”
+            </p>
+            <span class="font-bold text-orange-500">— Carla G.</span>
+        </div>
+
+        <!-- Testimonio 4 -->
+        <div class="min-w-[300px] bg-white p-6 rounded-2xl shadow-lg flex flex-col gap-4">
+            <p class="text-gray-700 italic">
+                “Volveré sin duda. Me encantó el servicio y la dedicación en cada detalle.”
+            </p>
+            <span class="font-bold text-orange-500">— Marco A.</span>
+        </div>
+
+    </div>
+
+    <!-- Botones izquierda / derecha -->
+    <div class="flex justify-center mt-6 gap-4">
+        <button onclick="document.getElementById('testimonios').scrollBy({left: -300, behavior:'smooth'})"
+                class="bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-xl">
+            ◄
+        </button>
+
+        <button onclick="document.getElementById('testimonios').scrollBy({left: 300, behavior:'smooth'})"
+                class="bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-xl">
+            ►
+        </button>
+    </div>
+
 </section>
 
     </main>
@@ -251,6 +279,14 @@
             behavior: "smooth"
         });
     });
+
+AOS.init({
+    duration: 900,
+    once: false,
+    easing: 'ease-out-cubic'
+});
+
+
 </script>
 
     <!-- Footer dinámico con fondo negro y acento naranja -->

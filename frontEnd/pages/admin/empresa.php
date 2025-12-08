@@ -21,10 +21,14 @@
 </head>
 <body class="bg-gray-100 min-h-screen">
 
-    <!-- Navbar -->
-    <header class="primary-blue text-white p-4 shadow-md flex justify-between items-center">
-        <h1 class="text-2xl font-semibold">Administrar Empresa</h1>
-        <a href="indexAdmin.php" class="px-4 py-2 bg-orange-500 rounded hover:bg-orange-600 transition">Volver</a>
+     <!-- NAVBAR ROJO -->
+    <header class="bg-orange-700 text-white py-5 shadow-md w-full">
+        <div class="max-w-5xl mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl font-bold">Información Empresa</h1>
+            <a href="../admin/indexAdmin.php" class="bg-white text-orange-600 px-4 py-2 rounded-lg font-semibold hover:bg-orange-50 transition">
+                Volver
+            </a>
+        </div>
     </header>
 
 <main class="p-8 max-w-3xl mx-auto space-y-8">

@@ -67,34 +67,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     // =========================
     // Cargar horas disponibles para empleado+fecha
     // =========================
-    fechaSelect.addEventListener('change', async () => {
-        const empleadoId = empleadoSelect.value;
-        const fecha = fechaSelect.value;
-        if (!empleadoId || !fecha) return;
+   fechaSelect.addEventListener('change', async () => {
+    const empleadoId = empleadoSelect.value;
+    const fecha = fechaSelect.value;
+    if (!empleadoId || !fecha) return;
 
-        horaSelect.innerHTML = '<option>Cargando...</option>';
+    horaSelect.innerHTML = '<option>Cargando...</option>';
 
-        try {
-            const resp = await fetch(`/DisenioWeb2/backEnd/public/disponibilidades/horas?empleado_id=${empleadoId}&fecha=${fecha}`);
-            const data = await resp.json();
+    try {
+        const resp = await fetch(`/DisenioWeb2/backEnd/public/disponibilidades/horas?empleado_id=${empleadoId}&fecha=${fecha}`);
+        const data = await resp.json();
 
+        if (Array.isArray(data) && data.length > 0) {
             horaSelect.innerHTML = '<option value="">-- Elige hora --</option>';
-
-            if (data.success && Array.isArray(data.horas)) {
-                data.horas.forEach(h => {
-                    if (h.idDisponibilidad && h.horaInicio) {
-                        // Guardamos valor como "hora|idDisponibilidad"
-                        horaSelect.innerHTML += `<option value="${h.horaInicio}|${h.idDisponibilidad}">${h.horaInicio}</option>`;
-                    }
-                });
-            } else {
-                horaSelect.innerHTML = '<option value="">No hay horas disponibles</option>';
-            }
-        } catch(err) {
-            console.error("Error cargando horas:", err);
-            horaSelect.innerHTML = '<option value="">Error cargando horas</option>';
+            data.forEach(h => {
+                if (h.idDisponibilidad && h.horaInicio) {
+                    horaSelect.innerHTML += `<option value="${h.horaInicio}|${h.idDisponibilidad}">${h.horaInicio}</option>`;
+                }
+            });
+        } else {
+            horaSelect.innerHTML = '<option value="">No hay horas disponibles</option>';
         }
-    });
+    } catch(err) {
+        console.error("Error cargando horas:", err);
+        horaSelect.innerHTML = '<option value="">Error cargando horas</option>';
+    }
+});
 
     // =========================
     // Mostrar método de pago

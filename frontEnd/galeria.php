@@ -20,6 +20,9 @@
 
     <!-- CSS personalizado -->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+
 </head>
 <body class="bg-gray-50 font-sans">
 
@@ -81,150 +84,27 @@
     </div>
 </div>
 
-<!-- Galería -->
-<section class="gallery flex flex-wrap justify-center gap-6 mt-10">
-
-    <!-- Imagen 1 -->
-    <a href="img/image2.jpg" data-lightbox="galeria" data-title="Corte femenino moderno">
-        <img src="img/image1.jpg"
-             class="rounded shadow-xl hover:scale-105 transition-transform gallery-img"
-             alt="Mujer con un nuevo corte" width="260">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+    
+    <a data-fancybox="galeria" href="img/foto1.jpg">
+        <img src="img/foto1.jpg" class="rounded-xl shadow-lg">
     </a>
 
-    <!-- Imagen 2 -->
-    <a href="img/image3.jpg" data-lightbox="galeria" data-title="Corte masculino clásico">
-        <img src="img/image2.jpg"
-             class="rounded shadow-xl hover:scale-105 transition-transform gallery-img"
-             alt="Corte masculino clásico" width="260">
+    <a data-fancybox="galeria" href="img/foto2.jpg">
+        <img src="img/foto2.jpg" class="rounded-xl shadow-lg">
     </a>
 
-    <!-- Imagen 3 -->
-    <a href="img/image1.jpg" data-lightbox="galeria" data-title="Barba premium y cuidado facial">
-        <img src="img/image3.jpg"
-             class="rounded shadow-xl hover:scale-105 transition-transform gallery-img"
-             alt="Barba premium" width="260">
+    <a data-fancybox="galeria" href="img/foto3.jpg">
+        <img src="img/foto3.jpg" class="rounded-xl shadow-lg">
     </a>
 
-</section>
+    <a data-fancybox="galeria" href="img/foto4.jpg">
+        <img src="img/foto4.jpg" class="rounded-xl shadow-lg">
+    </a>
 
+</div>
 
-      <!-- Sección de info -->
-      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-          <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-10 items-center" data-aos="fade-up">
-              <img src="img/image1.jpg" alt="Ejemplo" class="w-80 rounded-xl shadow-lg" data-aos="fade-right">
-              <div data-aos="fade-left">
-                  <h3 class="text-3xl font-bold text-orange-400 mb-4">Tu Mejor Estilo Te Espera</h3>
-                  <p class="text-gray-700 leading-relaxed mb-6">
-                      Nuestro equipo altamente capacitado te brinda cortes modernos, tintes profesionales y una atención personalizada.
-                  </p>
-                  <button class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-lg transition-transform hover:scale-105" data-aos="zoom-in">Agendar Cita</button>
-              </div>
-          </div>
-      </section>
-      <!-- ============================= -->
-<!--   SECCIÓN: SERVICIOS (3 ICONOS) -->
-<!-- ============================= -->
-<section class="mt-20">
-    <h2 class="text-4xl font-bold text-center text-orange-500 mb-10" data-aos="fade-up">
-        Nuestros Servicios
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-
-        <!-- Servicio 1 -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition-transform"
-             data-aos="fade-right">
-            <i data-feather="scissors" class="w-16 h-16 text-orange-500 mx-auto mb-4"></i>
-            <h3 class="text-2xl font-semibold text-gray-800">Corte de Cabello</h3>
-            <p class="text-gray-600 mt-3">Estilos modernos y clásicos adaptados a ti.</p>
-        </div>
-
-        <!-- Servicio 2 -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition-transform"
-             data-aos="fade-up">
-            <i data-feather="droplet" class="w-16 h-16 text-orange-500 mx-auto mb-4"></i>
-            <h3 class="text-2xl font-semibold text-gray-800">Tinturas</h3>
-            <p class="text-gray-600 mt-3">Coloración profesional con productos premium.</p>
-        </div>
-
-        <!-- Servicio 3 -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition-transform"
-             data-aos="fade-left">
-            <i data-feather="sparkles" class="w-16 h-16 text-orange-500 mx-auto mb-4"></i>
-            <h3 class="text-2xl font-semibold text-gray-800">Barbería</h3>
-            <p class="text-gray-600 mt-3">Afeitado premium y perfilado perfecto.</p>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ============================= -->
-<!--   SECCIÓN: ESTILISTAS (TARJETAS) -->
-<!-- ============================= -->
-<section class="mt-28">
-    <h2 class="text-4xl font-bold text-center text-orange-500 mb-12" data-aos="fade-up">
-        Estilistas Disponibles
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-
-        <!-- Estilista 1 -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition"
-             data-aos="zoom-in">
-            <img src="img/image1.jpg" class="rounded-full w-40 h-40 object-cover mx-auto shadow-lg mb-4">
-            <h3 class="text-2xl font-semibold text-gray-800">Carlos Gómez</h3>
-            <i data-feather="user" class="w-10 h-10 text-orange-500 mt-2"></i>
-        </div>
-
-        <!-- Estilista 2 -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition"
-             data-aos="zoom-in" data-aos-delay="100">
-            <img src="img/image2.jpg" class="rounded-full w-40 h-40 object-cover mx-auto shadow-lg mb-4">
-            <h3 class="text-2xl font-semibold text-gray-800">María Castro</h3>
-            <i data-feather="user" class="w-10 h-10 text-orange-500 mt-2"></i>
-        </div>
-
-        <!-- Estilista 3 -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition"
-             data-aos="zoom-in" data-aos-delay="200">
-            <img src="img/image3.jpg" class="rounded-full w-40 h-40 object-cover mx-auto shadow-lg mb-4">
-            <h3 class="text-2xl font-semibold text-gray-800">Luis Pereira</h3>
-            <i data-feather="user" class="w-10 h-10 text-orange-500 mt-2"></i>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ============================= -->
-<!--   SECCIÓN: SERVICIOS DETALLADOS -->
-<!-- ============================= -->
-<section class="mt-28 mb-20 max-w-7xl mx-auto" data-aos="fade-up">
-    <div class="bg-white rounded-2xl shadow-xl p-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-
-        <!-- Imagen derecha -->
-        <img src="img/image2.jpg" alt="Servicio" 
-             class="rounded-xl shadow-lg order-2 md:order-1" data-aos="fade-right">
-
-        <!-- Texto -->
-        <div class="order-1 md:order-2">
-            <h3 class="text-3xl font-bold text-orange-500 mb-4">Servicio Destacado</h3>
-
-            <p class="text-gray-700 mb-6">
-                Aquí puedes agregar una descripción completa del servicio, beneficios
-                y cualquier detalle que desees personalizar.
-            </p>
-
-            <!-- Ejemplo servicio + costo -->
-            <div class="bg-orange-100 border-l-4 border-orange-500 p-4 rounded-lg shadow-md">
-                <h4 class="text-xl font-semibold text-orange-600">Corte + Barba Premium</h4>
-                <p class="text-gray-700 mt-1 font-bold text-lg">Costo: 60 Bs.</p>
-            </div>
-        </div>
-
-    </div>
-</section>
+     
 
     </main>
 <!-- Botón Scroll Top -->
@@ -294,6 +174,25 @@
         'positionFromTop': 50
     });
 </script>
+<style>
+.galeria-img {
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+.galeria-img:hover {
+    transform: scale(1.06);
+    filter: brightness(1.15);
+}
+.floating {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+</style>
 
 </body>
 </html>

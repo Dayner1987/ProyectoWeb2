@@ -41,6 +41,7 @@
                 </tr>
             </thead>
             <tbody id="tablaServicios" class="text-gray-300"></tbody>
+            
         </table>
     </div>
 
@@ -73,6 +74,8 @@
                 </button>
             </div>
         </form>
+        <p id="errorHoras" class="text-red-500 mt-2 hidden"></p>
+
     </div>
 </main>
 

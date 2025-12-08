@@ -31,3 +31,7 @@
     color: #555;
     border-top: 1px solid #050000;
 }
+#scrollTopBtn:hover {
+    transform: scale(1.1);
+    background-color: #d35400;
+}
