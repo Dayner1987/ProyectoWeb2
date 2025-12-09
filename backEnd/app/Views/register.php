@@ -117,7 +117,7 @@ showToast('<?= htmlspecialchars($error) ?>', 'error');
 
 // Mostrar éxito y redirigir al front
 <?php if(!empty($success)) : ?>
-showToast('Registro exitoso. Bienvenido!', 'success', '/DisenioWeb2/frontEnd/pages/cliente/indexCliente.html');
+showToast('Registro exitoso. Bienvenido!', 'success', '/DisenioWeb2/frontEnd/pages/cliente/indexCliente.php');
 <?php endif; ?>
 </script>
 

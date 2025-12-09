@@ -9,8 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Lightbox CSS -->
-
-  <link rel="stylesheet" href="gallery/dist/css/lightbox.min.css">
+<!-- Lightbox CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Librerías adicionales -->
     <script src="https://unpkg.com/feather-icons"></script>
@@ -101,19 +101,19 @@
 
             <p class="text-gray-700 text-lg leading-relaxed mb-4">
                 A lo largo del tiempo, nuestras habilidades han evolucionado junto con las tendencias 
-                modernas, convirtiéndonos en referencia local. Nuestro compromiso es ofrecer siempre 
+                modernas con mas desde 30 años de experiencia, convirtiéndonos en referencia local. Nuestro compromiso es ofrecer siempre 
                 lo mejor, utilizando productos de alta calidad y métodos actualizados.
             </p>
 
             <p class="text-gray-700 text-lg leading-relaxed">
                 Hoy, seguimos creciendo y ampliando nuestros servicios, manteniendo la esencia que 
-                nos distingue: calidad, estilo y confianza.
+                nos distingue: calidad, estilo y confianza. No te pierdas la oportunidad de visitarnos
             </p>
         </div>
 
         <!-- Imagen derecha -->
         <div data-aos="fade-left">
-            <img src="img/historia.jpg" 
+            <img src="img/lugar.jpeg" 
                  alt="Historia"
                  class="rounded-2xl shadow-lg w-full object-cover h-80">
         </div>
@@ -132,7 +132,7 @@
     <div class="grid md:grid-cols-2 gap-6 items-center">
 
         <!-- Imagen de ubicación -->
-        <img src="img/ubicacion-demo.jpg" 
+        <img src="img/ubi.jpeg" 
              alt="Mapa ubicación"
              class="rounded-xl shadow-lg w-full object-cover h-80"
              data-aos="zoom-in">
@@ -140,11 +140,10 @@
         <!-- Información y enlace GPS -->
         <div class="flex flex-col gap-4">
             <p class="text-lg text-gray-700">
-                Encuéntranos fácilmente en nuestra sucursal principal.
-                Contamos con una ubicación accesible y cerca de transporte público.
+                Encuéntranos fácilmente en nuestra sucursal principal Z/ Pacata Baja, entre la circunvalacion y Vicente Villaroel. Frente al Joe Raque ATM Mercantil stcz.
             </p>
 
-            <a href="https://www.google.com/maps?q=-16.499,-68.132" 
+            <a href="https://maps.app.goo.gl/3aL3q16nmatfbWCC7" 
                target="_blank"
                class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-xl w-fit shadow-md transition flex items-center gap-2">
                 <i data-feather="map-pin"></i> Abrir en Google Maps
@@ -153,44 +152,46 @@
 
     </div>
 </section>
-<!-- ======================================= -->
-<!-- SECCIÓN: CERTIFICACIONES -->
-<!-- ======================================= -->
 <section class="mt-20 p-6 bg-gradient-to-r from-orange-400 to-yellow-300 rounded-2xl shadow-lg" data-aos="fade-up">
-
-    <h2 class="text-4xl text-white font-bold mb-10 text-center">
-        Certificaciones y Reconocimientos
-    </h2>
 
     <div class="grid md:grid-cols-3 gap-6">
 
-        <!-- Certificado 1 -->
-        <div class="bg-white rounded-2xl shadow-lg p-4" data-aos="zoom-in">
-            <img src="img/certificado1.jpg" 
+    <!-- Certificado 1 -->
+    <a href="img/chariCI.jpeg" data-lightbox="certificados" data-title="Rosario Canaviri">
+        <div class="bg-white rounded-2xl shadow-lg p-4 h-96 w-60 mx-auto hover:scale-105 transition-transform">
+            <img src="img/chariCI.jpeg" 
                  alt="Certificado 1"
-                 class="rounded-xl h-56 w-full object-cover">
-            <h3 class="mt-3 text-center font-bold text-gray-700">Certificado 1</h3>
+                 class="rounded-xl h-80 w-full object-cover">
+            <h3 class="mt-3 text-center font-bold text-gray-700">Rosario Canaviri</h3>
         </div>
+    </a>
 
-        <!-- Certificado 2 -->
-        <div class="bg-white rounded-2xl shadow-lg p-4" data-aos="zoom-in" data-aos-delay="100">
-            <img src="img/certificado2.jpg"
+    <!-- Certificado 2 -->
+    <a href="img/DaynerCI.jpeg" data-lightbox="certificados" data-title="Dayner Alvarez">
+        <div class="bg-white rounded-2xl shadow-lg p-4 h-96 w-60 mx-auto hover:scale-105 transition-transform">
+            <img src="img/DaynerCI.jpeg"
                  alt="Certificado 2"
-                 class="rounded-xl h-56 w-full object-cover">
-            <h3 class="mt-3 text-center font-bold text-gray-700">Certificado 2</h3>
+                 class="rounded-xl h-80 w-full object-cover">
+            <h3 class="mt-3 text-center font-bold text-gray-700">Dayner Alvarez</h3>
         </div>
+    </a>
 
-        <!-- Certificado 3 -->
-        <div class="bg-white rounded-2xl shadow-lg p-4" data-aos="zoom-in" data-aos-delay="200">
-            <img src="img/certificado3.jpg"
+    <!-- Certificado 3 -->
+    <a href="img/TonioCI.jpeg" data-lightbox="certificados" data-title="Jose Alvarez">
+        <div class="bg-white rounded-2xl shadow-lg p-4 h-96 w-60 mx-auto hover:scale-105 transition-transform">
+            <img src="img/TonioCI.jpeg"
                  alt="Certificado 3"
-                 class="rounded-xl h-56 w-full object-cover">
-            <h3 class="mt-3 text-center font-bold text-gray-700">Certificado 3</h3>
+                 class="rounded-xl h-80 w-full object-cover">
+            <h3 class="mt-3 text-center font-bold text-gray-700">Jose Alvarez</h3>
         </div>
+    </a>
 
-    </div>
+</div>
+
+
 
 </section>
+
 <!-- ======================================= -->
 <!-- SECCIÓN: TESTIMONIOS -->
 <!-- ======================================= -->
@@ -305,19 +306,24 @@ AOS.init({
             <div class="flex flex-col gap-2">
                 <h3 class="font-semibold text-orange-400 text-lg">Síguenos</h3>
                 <div class="flex gap-4">
-                    <a href="#" class="hover:text-orange-300"><i data-feather="instagram"></i></a>
-                    <a href="#" class="hover:text-orange-300"><i data-feather="facebook"></i></a>
-                    <a href="#" class="hover:text-orange-300"><i data-feather="twitter"></i></a>
+                    <a href="https://www.instagram.com/antonio_barber7?igsh=MTZvMWl6ZWV5d2M3aA==" class="hover:text-orange-300"><i data-feather="instagram"></i></a>
+                    <a href="https://www.facebook.com/share/16j9J4wzD6/" class="hover:text-orange-300"><i data-feather="facebook"></i></a>
+                    <a href="https://api.whatsapp.com/send/?phone=59172751531&text=Hola%2C+aqu%C3%AD+est%C3%A1+el+QR+de+la+empresa.&type=phone_number&app_absent=0" class="hover:text-orange-300"><i data-feather="phone"></i></a> <!-- WhatsApp -->
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="gallery/dist/js/lightbox-plus-jquery.min.js"></script>
+    <!-- Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+2️⃣ Modificar las tarjetas de certificados para abrir en Lightbox
+html
+Copiar código
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init({duration:800, once:false});</script>
-    <script src="js/main.js"></script>
+    <script src="js/servicios2.js"></script>
 <script>
     lightbox.option({
         'resizeDuration': 200,

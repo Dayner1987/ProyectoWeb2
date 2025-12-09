@@ -158,6 +158,11 @@ case (preg_match('/^\/reservas\/cliente\/(\d+)$/', $uri, $matches) && $method ==
 case ($uri === '/reservas/create' && $method === 'POST'):
     (new ReservaController())->store();
     break;
+    // GET /reservas/fecha/{YYYY-MM-DD}
+case (preg_match('/^\/reservas\/fecha\/(\d{4}-\d{2}-\d{2})$/', $uri, $matches) && $method === 'GET'):
+    (new ReservaController())->porFecha($matches[1]);
+    break;
+
 
 
 

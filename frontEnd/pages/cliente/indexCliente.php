@@ -229,9 +229,9 @@ async function eliminarReserva(id) {
             <div class="flex flex-col gap-2">
                 <h3 class="font-semibold text-orange-400 text-lg">Síguenos</h3>
                 <div class="flex gap-4">
-                    <a href="#" class="hover:text-orange-300"><i data-feather="instagram"></i></a>
-                    <a href="#" class="hover:text-orange-300"><i data-feather="facebook"></i></a>
-                    <a href="#" class="hover:text-orange-300"><i data-feather="twitter"></i></a>
+                    <a href="https://www.instagram.com/antonio_barber7?igsh=MTZvMWl6ZWV5d2M3aA==" class="hover:text-orange-300"><i data-feather="instagram"></i></a>
+                    <a href="https://www.facebook.com/share/16j9J4wzD6/" class="hover:text-orange-300"><i data-feather="facebook"></i></a>
+                    <a href="https://api.whatsapp.com/send/?phone=59172751531&text=Hola%2C+aqu%C3%AD+est%C3%A1+el+QR+de+la+empresa.&type=phone_number&app_absent=0" class="hover:text-orange-300"><i data-feather="phone"></i></a> <!-- WhatsApp -->
                 </div>
             </div>
         </div>

@@ -95,19 +95,20 @@ if ($model->existeReserva($disponibilidadId, $hora)) {
     // ACTUALIZAR ESTADO DE RESERVA
     // ==========================
     public function updateEstado($id) {
-        $estado = $_POST['estado'] ?? null;
+    $input = json_decode(file_get_contents('php://input'), true);
+    $estado = $input['estado'] ?? null;
 
-        if (!in_array($estado, ['pendiente','confirmada','cancelada'])) {
-            http_response_code(400);
-            echo json_encode(['success' => false, 'message' => 'Estado inválido']);
-            return;
-        }
-
-        $model = new Reserva();
-        $result = $model->updateEstado($id, $estado);
-
-        echo json_encode(['success' => $result]);
+    if (!in_array($estado, ['pendiente','confirmada','cancelada'])) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Estado inválido']);
+        return;
     }
+
+    $model = new Reserva();
+    $result = $model->updateEstado($id, $estado);
+
+    echo json_encode(['success' => $result]);
+}
 
     // ==========================
     // ELIMINAR RESERVA
@@ -118,4 +119,15 @@ if ($model->existeReserva($disponibilidadId, $hora)) {
 
         echo json_encode(['success' => $result]);
     }
+    // ==========================
+// LISTAR RESERVAS POR FECHA
+// ==========================
+public function porFecha($fecha) {
+    $model = new Reserva();
+
+    header("Content-Type: application/json");
+
+    echo json_encode($model->getByFecha($fecha));
+}
+
 }

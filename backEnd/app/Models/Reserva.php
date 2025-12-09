@@ -89,13 +89,22 @@ class Reserva {
         return true;
     }
 
-    public function updateEstado($id, $estado) {
-        $sql = "UPDATE Reservas SET estado=:estado WHERE idReservas=:id";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':estado', $estado);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        return $stmt->execute();
+   public function updateEstado($id) {
+    $input = json_decode(file_get_contents('php://input'), true);
+    $estado = $input['estado'] ?? null;
+
+    if (!in_array($estado, ['pendiente','confirmada','cancelada'])) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Estado inválido']);
+        return;
     }
+
+    $model = new Reserva();
+    $result = $model->updateEstado($id, $estado);
+
+    echo json_encode(['success' => $result]);
+}
+
 
     public function delete($id) {
         $sql = "DELETE FROM Reservas WHERE idReservas=:id";
@@ -125,5 +134,21 @@ public function checkHora($disponibilidadId, $hora) {
     $stmt->execute();
     return $stmt->fetchColumn() > 0;
 }
+// Obtener reservas por fecha
+public function getByFecha($fecha) {
+    $sql = "SELECT r.idReservas, u.nombreUsuario AS cliente_nombre, d.fecha, d.horaInicio AS hora, r.detalle, r.estado
+            FROM Reservas r
+            INNER JOIN Usuarios u ON r.cliente_id = u.idUsuarios
+            INNER JOIN Disponibilidades d ON r.disponibilidad_id = d.idDisponibilidad
+            WHERE d.fecha = :fecha
+            ORDER BY d.horaInicio ASC";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(":fecha", $fecha);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
 }

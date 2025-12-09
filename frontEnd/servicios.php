@@ -87,72 +87,150 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Servicio 1 -->
         <div class="bg-white p-6 rounded-2xl shadow-lg hover:scale-105 transition transform" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="text-2xl font-bold text-orange-400 mb-2">Servicio 1</h3>
-            <p class="text-gray-700">Descripción breve del servicio que se ofrece. Aquí puedes colocar detalles cortos y atractivos.</p>
+            <h3 class="text-2xl font-bold text-orange-400 mb-2">Corte de cabello</h3>
+            <p class="text-gray-700">Corte d ecabello para Varón y mujer a gusto del cliente o con referencia de consejos y reocmendaciones.</p>
         </div>
 
         <!-- Servicio 2 -->
         <div class="bg-white p-6 rounded-2xl shadow-lg hover:scale-105 transition transform" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="text-2xl font-bold text-orange-400 mb-2">Servicio 2</h3>
-            <p class="text-gray-700">Descripción breve del servicio que se ofrece. Aquí puedes colocar detalles cortos y atractivos.</p>
+            <h3 class="text-2xl font-bold text-orange-400 mb-2">Maquillaje + Peinado</h3>
+            <p class="text-gray-700">Maquillaje a gusto del cliente con su toque especial de genialidad para el cuidado personal.</p>
         </div>
 
         <!-- Servicio 3 -->
         <div class="bg-white p-6 rounded-2xl shadow-lg hover:scale-105 transition transform" data-aos="fade-up" data-aos-delay="300">
-            <h3 class="text-2xl font-bold text-orange-400 mb-2">Servicio 3</h3>
-            <p class="text-gray-700">Descripción breve del servicio que se ofrece. Aquí puedes colocar detalles cortos y atractivos.</p>
+            <h3 class="text-2xl font-bold text-orange-400 mb-2">Tinte de cabello</h3>
+            <p class="text-gray-700">Con las ultimas tendencias de la colorimetria con su tecnica de balayage, californianas, degradado o aplicaión de retoque.</p>
         </div>
     </div>
 </section>
 <section class="mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-    <h2 class="text-4xl font-bold text-center text-orange-500 mb-10">Precios de Nuestros Servicios</h2>
+    <h2 class="text-4xl font-bold text-center text-orange-600 mb-10 tracking-wide drop-shadow-md">
+        Precios de Nuestros Servicios
+    </h2>
 
-    <div class="overflow-x-auto rounded-2xl shadow-lg bg-white">
-        <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-orange-400 text-white">
+    <div class="overflow-x-auto rounded-2xl shadow-xl bg-white">
+        <table class="min-w-full divide-y divide-gray-300">
+            <thead class="bg-gradient-to-r from-orange-500 to-yellow-400 text-white">
                 <tr>
-                    <th class="px-6 py-3 text-left">Servicio</th>
-                    <th class="px-6 py-3 text-left">Precio</th>
+                    <th class="px-6 py-4 text-left text-lg font-semibold tracking-wide">Servicio</th>
+                    <th class="px-6 py-4 text-left text-lg font-semibold tracking-wide">Precio</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-gray-200">
-                <tr>
-                    <td class="px-6 py-4">Corte de Cabello</td>
-                    <td class="px-6 py-4">$50</td>
+
+            <tbody class="divide-y divide-gray-200 text-gray-700 text-base">
+                
+                <!-- 1 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Corte de Cabello</td>
+                    <td class="px-6 py-3">50 Bs.</td>
                 </tr>
-                <tr>
-                    <td class="px-6 py-4">Coloración</td>
-                    <td class="px-6 py-4">$80</td>
+
+                <!-- 2 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Coloración</td>
+                    <td class="px-6 py-3">80 Bs.</td>
                 </tr>
-                <tr>
-                    <td class="px-6 py-4">Peinado</td>
-                    <td class="px-6 py-4">$40</td>
+
+                <!-- 3 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Peinado</td>
+                    <td class="px-6 py-3">40 Bs.</td>
                 </tr>
-                <!-- Agrega más filas según necesites -->
+
+                <!-- 4 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Barbería Premium</td>
+                    <td class="px-6 py-3">45 Bs.</td>
+                </tr>
+
+                <!-- 5 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Planchado Profesional</td>
+                    <td class="px-6 py-3">35 Bs.</td>
+                </tr>
+
+                <!-- 6 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Tratamiento Capilar Hidratante</td>
+                    <td class="px-6 py-3">60 Bs.</td>
+                </tr>
+
+                <!-- 7 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Keratina</td>
+                    <td class="px-6 py-3">120 Bs.</td>
+                </tr>
+
+                <!-- 8 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Permanente</td>
+                    <td class="px-6 py-3">95 Bs.</td>
+                </tr>
+
+                <!-- 9 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Depilación Facial</td>
+                    <td class="px-6 py-3">25 Bs.</td>
+                </tr>
+
+                <!-- 10 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Maquillaje Social</td>
+                    <td class="px-6 py-3">110 Bs.</td>
+                </tr>
+
+                <!-- 11 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Manicure</td>
+                    <td class="px-6 py-3">30 Bs.</td>
+                </tr>
+
+                <!-- 12 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Pedicure</td>
+                    <td class="px-6 py-3">35 Bs.</td>
+                </tr>
+
+                <!-- 13 -->
+                <tr class="hover:bg-orange-50 transition-all">
+                    <td class="px-6 py-3 font-medium">Masaje Relajante</td>
+                    <td class="px-6 py-3">90 Bs.</td>
+                </tr>
+
             </tbody>
         </table>
     </div>
 </section>
 
 
+
 <!-- Sección Últimas Novedades -->
 <section class="mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-    <h2 class="text-4xl font-bold text-center text-orange-500 mb-10">Últimas Novedades</h2>
+    <h2 class="text-4xl font-bold text-center text-orange-500 mb-10">Servicios Novedosos</h2>
 
-    <div class="relative">
-        <!-- Carrusel -->
-        <div id="carruselNovedades" class="flex gap-6 overflow-hidden transition-transform duration-500">
-            <!-- Servicios se cargarán aquí dinámicamente -->
+    <div class="relative overflow-hidden">
+        
+        <div id="carruselNovedades" class="flex gap-6 transition-transform duration-500">
+            <!-- Se cargan dinámicamente -->
         </div>
 
         <!-- Botones -->
-        <button id="prevNovedades" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white px-3 py-2 rounded-full shadow-xl transition">◄</button>
-        <button id="nextNovedades" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white px-3 py-2 rounded-full shadow-xl transition">►</button>
+        <button id="prevNovedades"
+            class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white px-3 py-2 rounded-full shadow-xl">
+            ◄
+        </button>
+
+        <button id="nextNovedades"
+            class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white px-3 py-2 rounded-full shadow-xl">
+            ►
+        </button>
     </div>
 </section>
 
 <script>
 const API_URL = "http://localhost/DisenioWeb2/backEnd/public/servicios";
+
 const carrusel = document.getElementById('carruselNovedades');
 let index = 0;
 let serviciosData = [];
@@ -160,37 +238,60 @@ let serviciosData = [];
 async function cargarServiciosNovedades() {
     try {
         const res = await fetch(API_URL);
-        serviciosData = await res.json();
+        const data = await res.json();
 
-        carrusel.innerHTML = '';
-        serviciosData.forEach(s => {
-            carrusel.innerHTML += `
-                <div class="min-w-[250px] bg-white p-4 rounded-2xl shadow-lg hover:scale-105 transition transform">
-                    <h3 class="text-xl font-bold text-orange-400 mb-2">${s.nombreServicio}</h3>
-                    <p class="text-gray-700">${s.descripcionServicio ?? 'Descripción breve...'}</p>
-                </div>
-            `;
-        });
+        // Obtener solo LOS 4 MÁS RECIENTES
+        serviciosData = data.slice(-4);
+
+        carrusel.innerHTML = serviciosData.map(s => `
+            <div class="min-w-[300px] bg-white p-5 rounded-2xl shadow-lg hover:scale-105 transition transform">
+                <h3 class="text-xl font-bold text-orange-400 mb-2">${s.nombreServicio}</h3>
+                <p class="text-gray-700">${s.descripcionServicio ?? 'Descripción breve...'}</p>
+            </div>
+        `).join('');
+
     } catch (err) {
         console.error("Error al cargar los servicios:", err);
     }
 }
 
 document.getElementById('nextNovedades').addEventListener('click', () => {
-    if(index < serviciosData.length - 3) index++;
-    carrusel.style.transform = `translateX(-${index * 260}px)`;
+    if (index < serviciosData.length - 1) index++;
+    carrusel.style.transform = `translateX(-${index * 320}px)`;
 });
 
 document.getElementById('prevNovedades').addEventListener('click', () => {
-    if(index > 0) index--;
-    carrusel.style.transform = `translateX(-${index * 260}px)`;
+    if (index > 0) index--;
+    carrusel.style.transform = `translateX(-${index * 320}px)`;
 });
 
 cargarServiciosNovedades();
 </script>
 
+<section class="mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+    <h2 class="text-4xl font-bold text-orange-500 mb-6">Código QR de la Empresa</h2>
 
-     
+    <div class="text-center mt-10">
+<section class="py-10 flex justify-center">
+    <img src="img/QrEjemplo.jpg" 
+         class="w-72 h-72 rounded-xl shadow-2xl border"
+         alt="QR">
+</section>
+
+
+    </div>
+<div class="mt-6">
+    <a id="btnEnviarQR"
+       href="https://wa.me/59172751531?text=Hola,%20aquí%20está%20el%20QR%20de%20la%20empresa."
+       target="_blank"
+       class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl shadow-lg font-bold text-lg">
+        Enviar QR por WhatsApp
+    </a>
+</div>
+
+</section>
+
+
 
     </main>
 <!-- Botón Scroll Top -->
@@ -232,12 +333,12 @@ cargarServiciosNovedades();
                 <a id="footerCorreo" href="#" class="hover:text-orange-300 transition">Correo: info@peluqueria.com</a>
                 <p id="footerDireccion" class="hover:text-orange-300 transition">Dirección: Calle Falsa 123, La Paz</p>
             </div>
-            <div class="flex flex-col gap-2">
+           <div class="flex flex-col gap-2">
                 <h3 class="font-semibold text-orange-400 text-lg">Síguenos</h3>
                 <div class="flex gap-4">
-                    <a href="#" class="hover:text-orange-300"><i data-feather="instagram"></i></a>
-                    <a href="#" class="hover:text-orange-300"><i data-feather="facebook"></i></a>
-                    <a href="#" class="hover:text-orange-300"><i data-feather="twitter"></i></a>
+                    <a href="https://www.instagram.com/antonio_barber7?igsh=MTZvMWl6ZWV5d2M3aA==" class="hover:text-orange-300"><i data-feather="instagram"></i></a>
+                    <a href="https://www.facebook.com/share/16j9J4wzD6/" class="hover:text-orange-300"><i data-feather="facebook"></i></a>
+                    <a href="https://api.whatsapp.com/send/?phone=59172751531&text=Hola%2C+aqu%C3%AD+est%C3%A1+el+QR+de+la+empresa.&type=phone_number&app_absent=0" class="hover:text-orange-300"><i data-feather="phone"></i></a> <!-- WhatsApp -->
                 </div>
             </div>
         </div>

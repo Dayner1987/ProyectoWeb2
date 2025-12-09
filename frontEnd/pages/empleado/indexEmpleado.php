@@ -26,6 +26,12 @@
 <header class="w-full p-4 bg-[#1a1a1a] border-b border-gray-700 flex justify-between">
     <h1 class="text-2xl font-bold text-orange-500">Panel del Empleado</h1>
 </header>
+<div class="mt-6 flex justify-center md:justify-start">
+    <a href="reservasE.php" 
+       class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow">
+       Ver Reservas
+    </a>
+</div>
 
 <main class="max-w-6xl mx-auto mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
 
@@ -95,6 +101,7 @@
         <tbody id="tablaDisp" class="text-gray-300"></tbody>
     </table>
 </section>
+
 
 <script src="../../js/empleado.js"></script>
 

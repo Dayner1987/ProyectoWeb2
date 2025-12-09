@@ -78,16 +78,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         const resp = await fetch(`/DisenioWeb2/backEnd/public/disponibilidades/horas?empleado_id=${empleadoId}&fecha=${fecha}`);
         const data = await resp.json();
 
-        if (Array.isArray(data) && data.length > 0) {
-            horaSelect.innerHTML = '<option value="">-- Elige hora --</option>';
-            data.forEach(h => {
-                if (h.idDisponibilidad && h.horaInicio) {
-                    horaSelect.innerHTML += `<option value="${h.horaInicio}|${h.idDisponibilidad}">${h.horaInicio}</option>`;
-                }
-            });
-        } else {
-            horaSelect.innerHTML = '<option value="">No hay horas disponibles</option>';
+        if (Array.isArray(data.horas) && data.horas.length > 0) {
+    horaSelect.innerHTML = '<option value="">-- Elige hora --</option>';
+    data.horas.forEach(h => {
+        if (h.idDisponibilidad && h.horaInicio) {
+            horaSelect.innerHTML += `<option value="${h.horaInicio}|${h.idDisponibilidad}">${h.horaInicio}</option>`;
         }
+    });
+} else {
+    horaSelect.innerHTML = '<option value="">No hay horas disponibles</option>';
+}
+
     } catch(err) {
         console.error("Error cargando horas:", err);
         horaSelect.innerHTML = '<option value="">Error cargando horas</option>';

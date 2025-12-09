@@ -83,26 +83,122 @@
         </p>
     </div>
 </div>
+<!-- LightGallery CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery.min.css">
 
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
-    
-    <a data-fancybox="galeria" href="img/foto1.jpg">
-        <img src="img/foto1.jpg" class="rounded-xl shadow-lg">
-    </a>
+<section class="mt-20 max-w-7xl mx-auto px-4" data-aos="fade-up">
+    <h2 class="text-4xl font-bold text-center text-orange-500 mb-10">
+        Galería de Trabajos
+    </h2>
 
-    <a data-fancybox="galeria" href="img/foto2.jpg">
-        <img src="img/foto2.jpg" class="rounded-xl shadow-lg">
-    </a>
+    <div id="galeria" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        
+        <!-- IMÁGENES -->
+        <a href="img/img2/1.jpeg" class="gallery-item">
+            <img src="img/img2/1.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
 
-    <a data-fancybox="galeria" href="img/foto3.jpg">
-        <img src="img/foto3.jpg" class="rounded-xl shadow-lg">
-    </a>
+        <a href="img/img2/2.jpeg" class="gallery-item">
+            <img src="img/img2/2.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
 
-    <a data-fancybox="galeria" href="img/foto4.jpg">
-        <img src="img/foto4.jpg" class="rounded-xl shadow-lg">
-    </a>
+        <a href="img/img2/3.jpeg" class="gallery-item">
+            <img src="img/img2/3.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
 
-</div>
+        <a href="img/img2/4.jpeg" class="gallery-item">
+            <img src="img/img2/4.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
+
+        <a href="img/img2/5.jpeg" class="gallery-item">
+            <img src="img/img2/5.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
+
+        <a href="img/img2/6.jpeg" class="gallery-item">
+            <img src="img/img2/6.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
+
+        <a href="img/img2/7.jpeg" class="gallery-item">
+            <img src="img/img2/7.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
+
+        <a href="img/img2/8.jpeg" class="gallery-item">
+            <img src="img/img2/8.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
+
+        <a href="img/img2/9.jpeg" class="gallery-item">
+            <img src="img/img2/9.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
+
+        <a href="img/img2/10.jpeg" class="gallery-item">
+            <img src="img/img2/10.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
+
+        <a href="img/img2/11.jpeg" class="gallery-item">
+            <img src="img/img2/11.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
+
+        <a href="img/img2/12.jpeg" class="gallery-item">
+            <img src="img/img2/12.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
+
+        <a href="img/img2/13.jpeg" class="gallery-item">
+            <img src="img/img2/13.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
+
+        <a href="img/img2/14.jpeg" class="gallery-item">
+            <img src="img/img2/14.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
+
+        <a href="img/img2/15.jpeg" class="gallery-item">
+            <img src="img/img2/15.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition-transform">
+        </a>
+
+
+        <!-- VIDEOS -->
+        <a 
+            data-lg-size="1280-720"
+            data-lg-video="true"
+            data-src="img/img2/16.mp4"
+            class="gallery-item">
+            <video class="rounded-xl shadow-lg hover:scale-105 transition-transform" muted>
+                <source src="img/img2/16.mp4" type="video/mp4">
+            </video>
+        </a>
+
+        <a 
+            data-lg-size="1280-720"
+            data-lg-video="true"
+            data-src="img/img2/17.mp4"
+            class="gallery-item">
+            <video class="rounded-xl shadow-lg hover:scale-105 transition-transform" muted>
+                <source src="img/img2/17.mp4" type="video/mp4">
+            </video>
+        </a>
+
+        <a 
+            data-lg-size="1280-720"
+            data-lg-video="true"
+            data-src="img/img2/18.mp4"
+            class="gallery-item">
+            <video class="rounded-xl shadow-lg hover:scale-105 transition-transform" muted>
+                <source src="img/img2/18.mp4" type="video/mp4">
+            </video>
+        </a>
+
+    </div>
+</section>
+
+<!-- LightGallery Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/video/lg-video.min.js"></script>
+
+<script>
+    lightGallery(document.getElementById('galeria'), {
+        speed: 400,
+        plugins: [lgVideo],
+    });
+</script>
 
      
 
@@ -149,9 +245,9 @@
             <div class="flex flex-col gap-2">
                 <h3 class="font-semibold text-orange-400 text-lg">Síguenos</h3>
                 <div class="flex gap-4">
-                    <a href="#" class="hover:text-orange-300"><i data-feather="instagram"></i></a>
-                    <a href="#" class="hover:text-orange-300"><i data-feather="facebook"></i></a>
-                    <a href="#" class="hover:text-orange-300"><i data-feather="twitter"></i></a>
+                    <a href="https://www.instagram.com/antonio_barber7?igsh=MTZvMWl6ZWV5d2M3aA==" class="hover:text-orange-300"><i data-feather="instagram"></i></a>
+                    <a href="https://www.facebook.com/share/16j9J4wzD6/" class="hover:text-orange-300"><i data-feather="facebook"></i></a>
+                    <a href="https://api.whatsapp.com/send/?phone=59172751531&text=Hola%2C+aqu%C3%AD+est%C3%A1+el+QR+de+la+empresa.&type=phone_number&app_absent=0" class="hover:text-orange-300"><i data-feather="phone"></i></a> <!-- WhatsApp -->
                 </div>
             </div>
         </div>
