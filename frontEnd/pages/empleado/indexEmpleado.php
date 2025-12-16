@@ -26,12 +26,7 @@
 <header class="w-full p-4 bg-[#1a1a1a] border-b border-gray-700 flex justify-between">
     <h1 class="text-2xl font-bold text-orange-500">Panel del Empleado</h1>
 </header>
-<div class="mt-6 flex justify-center md:justify-start">
-    <a href="reservasE.php" 
-       class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow">
-       Ver Reservas
-    </a>
-</div>
+
 
 <main class="max-w-6xl mx-auto mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
 
@@ -58,8 +53,15 @@
         <form id="formDisp" class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
                 <label class="block mb-1">Fecha</label>
-                <input id="fecha" name="fecha" type="text"
-                       class="w-full p-2 rounded bg-[#111] text-white border border-gray-700" required>
+                <input 
+    id="fecha"
+    name="fecha"
+    type="text"
+    readonly
+    class="w-full p-2 rounded bg-[#111] text-white border border-gray-700"
+    required
+>
+
             </div>
 
             <div>

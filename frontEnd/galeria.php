@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peluqueria-barberia</title>
+    <title>peluquería</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -43,7 +43,7 @@
                     <a href="index.php" class="text-orange-400 hover:text-orange-300 transition">Inicio</a>
                     <a href="informacion.php" class="text-orange-400 hover:text-orange-300 transition">Información</a>
                     <a href="servicios.php" class="text-orange-400 hover:text-orange-300 transition">Servicios</a>
-                    <a href="galeria.php" class="text-orange-400 hover:text-orange-300 transition">Galeria</a>
+                    <a href="galeria.php" class="text-orange-400 hover:text-orange-300 transition">GalerÍa</a>
                     <a href="/DisenioWeb2/backEnd/public/login" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-semibold transition">Iniciar Sesión</a>
                 </nav>
 

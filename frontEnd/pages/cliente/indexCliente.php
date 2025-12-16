@@ -171,7 +171,7 @@ async function cargarReservas() {
                 <td class="py-3 px-4">
                     <button onclick="eliminarReserva(${r.idReservas})"
                         class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
-                        Eliminar
+                        Cancelar
                     </button>
                 </td>
             </tr>

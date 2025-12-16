@@ -132,7 +132,24 @@ function eliminarDisp(id) {
 // ======================================================
 // PICKERS
 // ======================================================
-flatpickr("#fecha", { dateFormat: "Y-m-d" });
+flatpickr("#fecha", {
+    dateFormat: "Y-m-d",
+    minDate: "today",
+    defaultDate: null,
+    allowInput: false,
+    disableMobile: true,
+    disable: [
+        {
+            from: "1900-01-01",
+            to: new Date().fp_incr(-1)
+        }
+    ],
+    onOpen: function(selectedDates, dateStr, instance) {
+        instance.clear();
+    }
+});
+
+
 flatpickr("#horaInicio", { enableTime: true, noCalendar: true, dateFormat: "H:i" });
 flatpickr("#horaFin", { enableTime: true, noCalendar: true, dateFormat: "H:i" });
 
